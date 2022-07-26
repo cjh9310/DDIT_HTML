@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ ul, ol { 
+ 	border:solid red; 
+ } 
+ li { 
+ 	border:solid blue; 
+ } 
+.a {
+/*   list-style-type: korean-hangul-formal; */
+  list-style-type: hiragana;
+  list-style-image: url(../images/ddit.PNG);
+  list-style-position: outside; /*default outside */
+}
+</style>
+</head>
+<body>
+  <!-- 순서없는 목록 -->
+  <ul>
+    <li type="disc">리스트1</li> <!-- type default -->
+    <li type="circle">리스트2</li>
+    <li type="square">리스트3</li>
+  </ul>
+  
+  <!-- 순서있는 목록 -->
+  <ol class="a">
+    <li>리스트1</li>
+    <li>리스트2</li>
+    <li>리스트3</li>
+  </ol>
+  
+  <ol type="A">
+    <li>리스트1</li>
+    <li>리스트2</li>
+    <li>리스트3</li>
+  </ol>
+  
+  
+  <dl>
+    <dt>제목1</dt>
+    <dd>내용1</dd>	<!-- 들여쓰기 -->
+    <dt>제목2</dt>
+    <dd>내용2</dd>	<!-- 들여쓰기 -->
+  </dl>
+
+  
+
+
+</body>
+</html>

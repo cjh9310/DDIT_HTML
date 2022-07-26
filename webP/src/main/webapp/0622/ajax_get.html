@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type="button" value="확인">
+  <div></div>
+
+<script>
+  $('input:button').on('click',function(){
+	// XMLHttpRequest객체 생성후
+	let req = new XMLHttpRequest();
+	//요청하기
+	// open(method, url, async) - 요청정보 설정
+	req.open('get', 'jsonObjArr.jsp');	//필수요소
+	// send() - 서버로 요청보내기
+	req.send();
+	
+	//응답받기 - onreadystatechange 속성
+	req.onreadystatechange=function(){
+		if(this.readyState == 4 && this.status == 200){
+			let data = JSON.parse(this.responseText); //json object array..
+			
+			// 결과를 테이블 형태로 작성
+			let result = "<table border=1>";
+			
+			
+			//객체의 key, value, key와 value를 배열형태로 받아오기
+			//Object.keys(), values(), entries()
+			let objArr = Object.values(data); //json object..
+// 			console.log(objArr);
+			let keyArr = Object.keys(objArr[2]);
+			console.log(keyArr);
+			
+			
+			result += `<tr><th>${keyArr[0]}</th><th>${keyArr[1]}</th><th>${keyArr[2]}</th></tr>`;
+			//반복 - each()
+			$.each(data,function(i,v){
+			  result += "<tr><td>" + v.name + "</td>";
+			  result += "<td>" + this.addr  + "</td>";
+			  result += `<td> ${data[i].tel} </td></tr>`;
+			});
+			result += "</table>";
+			$('div').html(result);
+		}
+	};
+  });
+</script>
+</body>
+</html>

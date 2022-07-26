@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+  width: 400px;
+  height: 500px;
+  border: 10px dashed;
+  padding: 50px;
+}
+
+#d1 {
+/*   background-color: #123456; */
+/*   background-clip: content-box;		/* 배경색 시작 지점 지정 */
+   background-image: url("../images/img/짱구.jpg"); 
+/*   background-origin: content-box;		/* 배경이미지 시작 지점 지정 */ 
+   background-size: 80%; 
+   background-repeat: no-repeat; 
+   background-position: 10% 90%;      /* 우치 지정 단위(% px) 사용 가능 */
+/*   background-attachment: local;	 */
+/*   overflow: auto; */
+/*   float: left; */
+  
+/*  
+	축약
+		보통 color or image position/size repeat attachment....  순으로 작성하지만
+		순서 상관 없이 표현 가능
+*/
+  /* postition
+  		x축과 y축에 left, right, top, bottom, center를 기입하거나
+  		%, px 단위를 이용해 위치를 조정한다.
+  	
+  	size
+  		size와 position은 같은 단위를 공유하므로 /로 구분해 작성해야 한다.
+  		또한, (축약시) size만 사용할 경우에도 반드시 position값을 명시해야 한다.
+  */
+/*   size만 작성하고 싶더라도 position을 꼭 입력해야 합니다.. */
+/*   background: url(../images/img/짱구.jpg) left top/50% no-repeat; */
+ 
+}
+
+
+</style>
+</head>
+<body>
+  <div id="d1"></div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<script>
+function Car (model, speed, color){
+	this.model = model;
+	this.speed = speed;
+	this.color = color;
+	this.brake = function(){
+		this.speed -= 10;
+	}
+	this.accel = function(){
+		this.speed += 10;
+	}
+}
+
+let myCar = new Car('520d',60,'red');
+document.write('모델 : ' + myCar.model + '속도 : ' + myCar.speed + '<br>'); 
+myCar.accel();
+
+document.write(`모델 : ${myCar.model} 속도 : ${myCar.speed} <br>`); 
+myCar.brake();
+
+document.write('모델 : ' + myCar.model + '속도 : ' + myCar.speed + '<br>'); 
+
+//생성자 함수에 따로 등록하지 않고 속성/메소드를 바로 추가할 수 있음
+myCar.price = "1000";
+document.write(`모델 : ${myCar.model} 가격 : ${myCar.price} <br>`); 
+console.log(myCar);
+
+myCar.showModel = function(){
+	alert(`색상 : ${myCar.color} 가격 : ${myCar.price}`);
+	return 	`model : ${myCar.model} speed : ${myCar.speed}`;
+}
+console.log(myCar.showModel());
+
+console.log(myCar.color);
+delete myCar.color;
+console.log(myCar.color);
+
+console.log(myCar.showModel());
+delete myCar.showModel;
+console.log(myCar.showModel());
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

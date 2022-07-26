@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+img{
+	width : 100px;
+}
+</style>
+<script src= "../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h4>이미지요소 src속성의 파일명을 추출하여 title속성으로 지정</h4>
+	<div>
+		<img src="../images/dog.jpg" alt="">
+		<img src="../images/cat.jpg" alt="">
+		<img src="../images/jjang.jpg" alt="">
+		<img src="../images/ddit.PNG" alt="">
+		
+	</div>
+<script>
+	//attribute get - 첫번째 항목만 반환
+	console.log($('img').attr('src'));  
+	//attribute get - 일괄처리
+	$('img').attr('title','타이틀');      
+
+	//attr() 속성 값 적용시 함수를 사용해서 반환하는 값 설정
+	$('img').attr('title',function(){
+		// 함수 내부적으로 this를 통해 순차적인 값을 반환
+	//	console.log($(this).attr('src')); 실행해서 작동하는지 확인       // this를 jQuery화 시킴  = $()
+		let v_src = $(this).attr('src');
+	// 이미지 이름 추출 - substring(str,end-1)
+		let str = v_src.lastIndexOf("/") +1;          //index 값을 맞추기 위해 +1 을 사용
+		let end = v_src.lastIndexOf('.');
+		let v_nm = v_src.substring(str,end);
+		console.log(v_nm);
+		return v_nm;
+	});
+	//속성제거 - removeAttr()
+	$('img').eq(2).removeAttr('title');
+	//여러 속성 설정
+	$('img').eq(2).attr({
+		'src':'../images/dog.jpg',
+		'alt' : '멍멍이',
+		'title' : '멍멍이'
+	});
+
+
+
+</script>
+</body>
+</html>

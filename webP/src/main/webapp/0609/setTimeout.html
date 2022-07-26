@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 1px solid;
+  border-radius: 20px;
+  height: 20px;
+  padding: 40px;
+  margin: 10px;
+}
+</style>
+<script>
+/* function proc(){
+	//setTimeout(fn,ms);
+	setTimeout(function(){
+// 		let v_div = document.querySelector('div');
+// 		v_div.style.backgroundColor = "green";
+		document.querySelector('div')
+			.style.backgroundColor = "orange";
+	},1000);
+} */
+
+function proc(){
+	setTimeout(aFn,2000);  // 함수안에 함수 호출시 ()생략   2초뒤 
+}
+function aFn(){
+	let v_div = document.querySelector('div');
+	v_div.style.backgroundColor = "green";
+}
+
+
+</script>
+</head>
+<body>
+  <input type="button" value="setTimeout" onclick="proc()">
+  <div>setTimeout(fn, ms) : ms에 지정된 시간 경과시 배경색 변경</div>
+</body>
+</html>

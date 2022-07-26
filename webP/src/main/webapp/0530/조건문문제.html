@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+function game(){
+	let a = prompt("A USER","가위바위보");
+	let b = prompt("B USER","가위바위보");
+	let c;
+	let result;
+	
+	if(a == b){
+		c = "비겼다!!";
+	}else if(a == "가위" && b == "바위" ||
+			 a == "바위" && b == "보" ||
+			 a == "보" && b == "가위"){
+		c = "B USER WIN!!";
+	}else {
+		c = "A USER WIN!!";
+	}
+// 	result = "A 유저 : " + a + "<br>";
+// 	result += "B 유저 : " + b + "<br>";
+// 	result += "결과 : " + c;
+	
+	//백틱 (backtick/grave accent)
+	// 문자열과 변수의 값을 하나의 문자열 안에 기술할 수 있다
+	// 백틱 문자열 안에 변수는 ${} 기호 안쪽에 기술한다
+	result = `a유저 : ${a} <br>`;
+	result += `b유저 : ${b} <br>`;
+	result += `결과 : ${c}`;
+	
+	
+	document.getElementsByTagName('div')[0].innerHTML = result;
+}
+</script>
+</head>
+<body>
+  <input type="button" value="가위바위보" onclick="game()">
+  <div></div>
+</body>
+</html>

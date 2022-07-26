@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style>
+    .container, .container-fluid {
+      background: blue;
+    }
+    .fixed, .fluid {
+      background: gold;
+      height: 100px;
+      line-height: 30px;
+      text-align: center;
+      color: white;
+      font-weight: 700;
+    }
+    .width720 {
+      width: 720px;
+      border: 3px solid green;
+      margin: auto;
+    }
+    .width960 {
+      width: 960px;
+      border: 3px solid green;
+      margin: auto;
+    }
+    .width1140 {
+      width: 1140px;
+      border: 3px solid green;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<pre>
+	Container : 레이아웃을 만드는 가장 상위의 요소
+	container(fixed) - Media query에 의해 반응형 동작
+		가로해상도 576px이하 - 100% 가로폭
+<!-- 		가로해상도 767px이하 - 100% 가로폭 -->
+		가로해상도 768px이상 - 720px 가로폭
+		가로해상도 992px이상 - 960px 가로폭
+		가로해상도 1200px이상 - 1140px 가로폭
+		
+	container-fluid(fluid)- 가로 해상도에 상관없이 width 100%
+</pre>
+  <div class="container">
+    <div class="fixed">
+    	fixed width (.container) <br>
+    	고정폭 레이아웃을 만들 때 사용 <br>
+    	반응형 동작에 따라 가로폭 조절됌
+    </div>
+  </div>
+  <br>
+  
+  <div class="width720">720</div> <br>
+  <div class="width960">960</div> <br>
+  <div class="width1140">1140</div> <br>
+  
+  <br>
+  <div class="container-fluid">
+<!--     <div class="fluid"> -->
+    	full width (.container-fluid) <br>
+    	좌우 꽉 찬 레이아우을 만들 때 사용 <br>
+    	가로 해상도에 상관없이 width 100%
+<!--     </div> -->
+  </div>
+  
+<pre>
+	integrity attribute
+	&lt;link>,&lt;script> 태그에 사용
+	리소스를 사용할 관리자가 수정사항을 검토할수 있도록 설계되어, 설정된 값에 변동사항이 있으면 로드되지 않는다
+	이를 통해 악의적인 스크립트 변조를 막을 수 있으며, 지원하는 해시는 sha256 sha384 sha512
+	IE는 해당 옵션이 적용되지 않는다 
+</pre>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+  		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
+  		crossorigin="anonymous"></script>
+</body>
+</html>

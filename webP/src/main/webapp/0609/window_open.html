@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+function naverGo(){
+  window.open("http://www.naver.com", "네이버", "width=300 height=300");
+}
+function daumGo(){
+  window.open("http://www.daum.net", "네이버");
+}
+function proc(){
+  window.open("window_sub.html","","width=400 height=300 left=100 top=100");
+}
+</script>
+</head>
+<body>
+  <input type="button" value="네이버 열기" onclick="naverGo()">
+  <input type="button" value="다음 열기" onclick="daumGo()">
+  
+  <hr>
+  
+  <h4>새로운 창(자식창)을 열고 이름을 입력시 현재 창(부모창)에 이름 출력</h4>
+  <input type="button" value="확인" onclick="proc()">
+  <div id="rst"></div>
+
+</body>
+</html>

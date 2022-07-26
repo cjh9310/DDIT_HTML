@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<script>
+// var키워드 - 재선언 재할당 가능
+/* 
+ var name = "asdfasdf";	//최초 선언 //a개발자도 사용하고
+console.log(name);
+var name = "javascript";//재 선언	//b개발자도 사용하고
+console.log(name);
+*/
+
+// let키워드 - 재선언 불가 재할당 가능
+/* 
+let name = "asdfasdf"; //최초 선언
+console.log(name);
+name = "javascript";  //재할당 가능
+console.log(name);
+ */
+ 
+ //const키워드 - 재선언 재할당 불가
+ //불변, 값을 재할당 할 수 없는 읽기전용 (변하지 않는 값을 담는)변수
+ //선언시 반드시 값도 함께 할당해야 한다
+ //강제성은 없지만 보통 대문자를 사용해서 선언한다 ex) const NAME ='name'
+ const name = "asdfasdf";
+ console.log(name);
+//  name = "javascript";	//Assignment to constant variable.
+//  console.log(name);
+</script>
+<pre>
+	변수 키워드 3종 (var, let, const)
+	
+	var
+		- scope : 함수 범위
+		- 변수 호이스팅 발생 (=선언 이전 참조를 가능하게 하여
+								비정상적 흐름의 코드 작성을 가능하게 함)
+		- 변수 선언시 키워드 생략 허용(=의도하지 않은 변수의 전역화)
+		- 재선언, 재할당 가능
+		
+	>> 코드의 복잡도를 높이고 오류를 발생시키는 등 다수의 문제를
+	발생시켜 이를 보완하고자 ES6에서 let, const 도입
+		
+	let
+		- scope : 블록('{}') 범위
+		- 변수 사용전까지 초기화되지 않음
+		- 변수 재선언 불가
+		- 변수 재할당 가능
+		- 변수 호이스팅 불가
+		
+	const
+		- scope : 블록('{}') 범위
+		- 변수 사용전까지 초기화되지 않음
+		- 변수 재선언 및 재할당 불가
+</pre>
+</body>
+</html>

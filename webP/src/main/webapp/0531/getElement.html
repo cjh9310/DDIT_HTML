@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<pre>
+	* 단어 첫자 대문자 표기
+	 
+	getElementById() : id속성을 이용한 요소 접근
+		* id는  유니크하기 때문에 단일요소 검색(=Element)
+	getElementsByTagName() : 요소(tag)를 이용한 접근
+		* 요소 중 하나를 선택할 때 index를 설정
+	getElementsByClassName() : class속성을 이용한 요소 접근
+		* 여러 요소에 접근하기때문에 (=Elements)
+</pre>
+
+  <h1 id="test">This is a heading</h1>
+  
+  <script>
+    function func(){
+      var e = document.getElementById('test');
+      var f = document.getElementsByTagName('button')[0];
+      e.style.color = "red";
+//       alert(e.innerHTML);
+      alert(f.value);
+//       e.innerHTML = "배고파요.";
+      f.innerHTML = "버튼변경";
+    }
+  </script>
+
+  <button type="button" onclick="func()" value="btn">클릭하세용!</button>
+</body>
+</html>

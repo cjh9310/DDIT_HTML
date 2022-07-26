@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+let arr = ["고길동","둘리","도우너","또치","희동이"];
+//push : 배열 끝에 요소 추가
+//unshift : 배열 시작에 요소 추가
+function push(){
+	let a = prompt("추가할 값 입력");
+// 	arr.push(a);
+	arr.unshift(a);
+// 	let result = `push() : ${arr}`;
+	let result = `unshift() : ${arr}`;
+	document.querySelector('div').innerText = result;
+}
+//pop : 배열 끝에 요소 제거하고 제거한 값을 반환받을 수 있음
+//shift : 배열 처음 요소 제거하고 값을 반환받음
+function pop(){
+// 	let item = arr.pop();	//제거하고 제거값을 item변수에 담음
+	let item = arr.shift();	//제거하고 제거값을 item변수에 담음
+// 	let result = `제거 후 : ${arr} / 제거한 값 : ${item}`;
+	let result = `제거 후 : ${arr} / 제거한 값 : ${item}`;
+	document.querySelector('div').innerText = result;
+}
+//reverse : 거꾸로..
+function reverse(){
+	arr.reverse();
+	let result = `기존 배열을 거꾸로 : ${arr}`;
+	document.querySelector('div').innerText = result;
+}
+//sort : 정렬(사전순 나열)
+function sort(){
+	arr.sort();
+	let result = `arr sort() : ${arr} <br>`;
+	
+	let num = [12,100,230,32,300,24,512];
+	num.sort();
+	result += `num sort() : ${num} <br>`;
+	//sort(fn)으로 크기순 정렬..
+	num.sort(function(a,b){	//반환값이 양수일때 자리 변경. 0일때 변경안함
+// 		return a-b;	//오름차순
+		return b-a;	//내림차순
+	});
+	result += `num sort(fn) : ${num}`;	
+	
+	document.querySelector('div').innerHTML = result;
+}
+//splice(index,n,a,b,c,...) : index위치에서 n개 삭제하고 a,b,c,...추가 
+function splice(){
+	arr.splice(1,2,"3교시","4교시");
+	let result = `splice(1,2,"3교시","4교시") : ${arr} <br>`;
+	arr.splice(1,2);
+	result += `splice(1,2) : ${arr} <br>`;	//추가하지않고 삭제만..
+	arr.splice(1,0,"new");
+	result += `splice(1,0,'new') : ${arr}`;	//삭제하지않고 추가만..
+	document.querySelector('div').innerHTML = result;
+}
+//slice(start, end-1) : start에서 end-1 영역을 잘라 새로운 배열을 만듦
+function slice(){
+	let a = prompt("arr에 저장된 값 중 하나를 입력하슈");
+	let idx = arr.indexOf(a);	//입력한 값의 위치 인덱스 얻음
+	let newArr = arr.slice(idx, arr.length);	//입력값 위치 부터 arr배열 끝까지 영역 자름
+	
+	let result = `입력값 위치 : ${idx} <br>`;
+	result += `새로운 배열 : ${newArr}`;
+	
+	document.querySelector('div').innerHTML = result;
+}
+//concat : 여러 배열 합치기
+function concat(){
+	let arr1 = ["포도","감","수박"];
+	let arr2 = [1,200,3.2];
+	let arr3 = [true, false];
+	let conc = arr1.concat(arr2, arr3);
+	let result = `${conc} <br> 합쳐진 배열 conc : ${conc[4]}`;
+	
+	document.querySelector('div').innerHTML = result;
+}
+//join(deli) : 배열요소를 하나의 문자열로 합침(구분자 지정가능 생략시 콤마)
+function join(){
+	let join = arr.join('/');
+	let result = `문자열로 합쳐짐 : ${join} <br>`; 
+	result += `join[1] >> ${join[1]} / join[10] >> ${join[10]}`;
+	document.querySelector('div').innerHTML = result;
+}
+</script>
+</head>
+<body>
+  <h4>["고길동","둘리","도우너","또치","희동이"]</h4>
+  <input type="button" value="push/unshift" onclick="push()">
+  <input type="button" value="pop/shift" onclick="pop()">
+  <input type="button" value="reverse" onclick="reverse()">
+  <input type="button" value="sort" onclick="sort()">
+  <input type="button" value="splice" onclick="splice()">
+  <input type="button" value="slice" onclick="slice()">
+  <input type="button" value="concat" onclick="concat()">
+  <input type="button" value="join" onclick="join()">
+  <div></div>
+  
+</body>
+</html>

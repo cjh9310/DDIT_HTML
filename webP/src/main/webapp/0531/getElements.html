@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 1px dotted;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  height: auto;
+}
+p {
+  border: 1px dashed gray;
+}
+</style>
+<script>
+function getCN(){
+// 	let v_p = document.getElementsByClassName('p')[0];
+	let v_p = document.querySelector('.p');	//첫번째 요소만 선택한다
+// 	console.log(v_p.length);
+	v_p.style.color = 'gold';
+	
+// 	let pArr = document.getElementsByClassName('p');
+	let pArr = document.querySelectorAll('.p');
+	//한놈씩 스타일을 지정해줍시다..
+	for(i=0; i<pArr.length; i++){
+		pArr[i].style.borderColor = 'purple';
+		pArr[i].style.borderWidth = '5px';
+	}
+}
+function getTN(){
+// 	let v_d = document.getElementsByTagName('div')[0];
+	let v_d = document.querySelector('div');	//첫번째 요소만 선택
+// 	console.log(v_p.length);
+	v_d.style.color = 'lightblue';
+	v_d.style.borderWidth = '5px';
+	
+	let dArr = document.querySelectorAll('div');
+	//한놈씩 스타일을 지정해줍시다..
+	for(i=0; i<dArr.length; i++){
+		dArr[i].style.Color = 'green';
+		dArr[i].style.borderWidth = '3px';
+	}
+}
+</script>
+</head>
+<body>
+<pre>
+	ES2버전에서 만들어짐 (경우에 따라 더 효율적으로 사용된다.)
+	getElementsByID('id명')
+	
+	getElementsByClassName('클래스명')[n]
+	getElementsByTagName('요소명')[n]
+	요소를 모두 선택하거나 [n]번째 항목 선택 가능
+	ClassName, TagName은 여러개의 요소에 접근 가능하므로 (=Elements)
+	--------------------------------------------------------
+	ES6에서 나온 새로운 버전
+	querySelector('#id명' 또는 '.class명' 또는 'tag(요소)명')     
+			ㄴ첫번째 요소만 선택
+	querySelectorAll('#id명' 또는 '.class명' 또는 'tag(요소)명')
+			ㄴ모든 요소 선택
+	
+</pre>
+  <div class="d">첫번째 div1
+    <p class="p">첫번째 p1</p>
+    <p class="p">p2</p>
+    <p class="p">p3</p>
+    <p class="p">p4</p>
+  </div>
+  <div class="d">div2</div>
+  <div class="d">div3</div>
+  <div class="d">div4</div>
+  
+  <input type="button" value="getElementsByClassName" onclick="getCN()">
+  <input type="button" value="getElementsByTagName" onclick="getTN()">
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+let arr = ["홍길동","고길동","둘리","도우너","또치","희동이","고길동","철수","영희","김은대"];
+
+// function proc1(){}		//선언식함수 (기명함수)
+let proc1 = function(name){	//표현식함수 (익명/무명함수, 변수에 담아서 활용)
+	let idx = arr.indexOf(name);
+	//출력정보 입력
+	let result = `indexOf()로 찾은 이름 ${name}은 `;
+		result += `${idx}번째에 있네요`;
+		
+	document.querySelector('div').innerText = result; 	
+};
+let proc2 = function(nm){
+	let idx = arr.lastIndexOf(nm,5);
+	let result = `lastIndexOf()로 찾은 이름 ${nm}은 ${idx}번째에 있음`;
+	document.getElementsByTagName('div')[0].textContent = result;
+};
+//이름이 여러 개인 경우 모든 위치 찾기
+function proc3(a){
+	let idx = 0; //찾을 데이터의 범위를 지정하기 위한 index
+	let str_idx = "";
+	while(true){
+		idx = arr.indexOf(a, idx);	//'고길동' idx = 1->6이 됌
+		if(idx == -1) break;
+		str_idx += `${idx}번째 `;
+		idx++;
+	}
+	let result = `찾는 이름 ${a}는 ${str_idx}에 있네요`;
+	document.querySelector('div').innerText = result;
+}
+//배열목록 중 하나의 값을 입력해서 위치 값 얻기
+let proc4 = function(){
+
+	let name = prompt("배열 값 중 하나 입력");
+	let idx = arr.indexOf(name);
+	let result = "";
+	
+	if(idx == -1){
+		result += `찾는 이름 없습니다`;
+	}else {
+		result += `${name}님은 ${idx}번째에 있습니다`;
+		result += `<a href='detail.jsp?name=${name}'>상세보기</a>`;
+	}
+	document.querySelector('div').innerHTML = result;
+};
+</script>
+</head>
+<body>
+<pre>
+	indexOf(value, start)
+	:	value - 찾을 문자열 (필수요소)
+		start - 검색을 시작할 index (선택요소/미입력시 처음부터 검색)
+		
+	lastIndexOf(value, end)
+	:	value - 찾을 문자열 (필수)
+		end - 검색을 끝낼 index (선택/미입력시 끝까지 검색)	
+		
+	* 대소문자를 구분한다
+	* 찾는 문자열이 없을 경우 -1을 반환한다	
+</pre>
+  <p>["홍길동","고길동","둘리","도우너","또치","희동이","고길동","철수","영희","김은대"]</p>
+  <input type="button" value="indexOf" onclick="proc1('희동이')">
+  <input type="button" value="lastIndexOf" onclick="proc2('고길동')">
+  <input type="button" value="indexOf" onclick="proc3('고길동')">
+  <input type="button" value="indexOf" onclick="proc4()">
+  <div></div>
+
+</body>
+</html>

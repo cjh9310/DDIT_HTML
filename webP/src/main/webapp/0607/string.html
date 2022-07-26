@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  display: inline-block;
+  border: 2px dotted;
+  margin: 10px;
+}
+</style>
+<script>
+let str = "우리나라 좋은나라 대한민국 만세~~ 독도는 우리땅~~ABCabc0123";
+
+//charAt(index) : index번째 문자를 반환
+//charCodeAt(idx) : index번째 문자 아스키코드/유니코드를 반환
+//					A->65, a->97, 0->48
+function charAt(){
+  let result = `${str.charAt(3)} (유니코드 ${str.charCodeAt(3)}) <br>`;
+  result += str.charAt(29) + " : (유니코드 " + str.charCodeAt(29) + ") <br>";
+  result += str.charAt(32) + " : (유니코드 " + str.charCodeAt(32) + ") <br>";
+  result += str.charAt(35) + " : (유니코드 " + str.charCodeAt(35) + ") <br>";
+  document.querySelector('div').innerHTML = result;
+}
+//indexOf(str, s_idx) / lastIndexOf(str, e_idx): 문자열의 위치를 idx로 반환
+//s_idx : 검색이 시작되는 위치 인덱스 지정
+//e_idx : 검색이 끝나는 위치 인덱스 지정
+function indexOf(){
+  let result = `indexOf('우리',3) : ${str.indexOf('우리',3)} <br>`;
+  result += `lastIndexOf('우리',20) : ${str.lastIndexOf('우리',20)} <br>`;
+  result += `indexOf('뷁') : ${str.indexOf('뷁')}`
+  document.getElementsByTagName('div')[1].innerHTML = result;
+}
+//trim() : 문자열 앞뒤 공백 제거(문자열 안쪽 공백은 제거하지 않음)
+function trim(){
+//   document.querySelector('#txt').value
+  let val = document.getElementById('txt').value;
+  let result = `공백 제거 전 : ${val.length} <br>`;
+  val = val.trim();
+  result += `공백 제거 후 : ${val.length}`;
+  
+  if(val.length < 1){
+	  alert("데이터를 입력하세요");
+	  return false;
+  }
+  document.getElementsByTagName('div')[2].innerHTML = result;
+}
+//substring(start,end)
+//slice(start,end)
+//substr(start,length)
+//start~end사이 문자열 잘라내기(end는 포함되지 않음)
+function substring(){
+  let start = str.indexOf("독");					// 20
+  let end = start + "독도는 우리땅".length;	//20 + 7 = 27	 
+  
+  let result = `substring : ${str.substring(start,end)} <br>`;
+  result += `slice : ${str.slice(start,end)} <br>`;
+  result += `substr : ${str.substr(start,"독도는 우리땅".length)}`;
+  
+  document.getElementsByTagName('div')[3].innerHTML = result;
+}
+//split(구분자,구분(반환)갯수) : 구분자 기준으로 문자열을 분리해 배열로 반환
+function split(){
+  let arr = str.split(" ",3);
+  let result = `문자열 갯수 : ${str.length} / 문자열 2번째 항목 : ${str[2]} <br>`;
+  result += `배열 갯수 : ${arr.length} / 배열 2번째 항목 ${arr[2]}`;
+  document.getElementsByTagName('div')[4].innerHTML = result;
+}
+//replace(찾을 문자열,변경할 문자열) : 문자열을 찾아 변경 문자열로 치환
+function replcae(){
+//	let ta = document.getElementsByTagName('textarea')[0].value;   둘 중 하나 사용
+	let ta = document.querySelector('textarea').value;
+	ta = ta.replace(/\r/g,"").replace(/\n/g,"<br>");
+	document.getElementsByTagName('div')[5].innerHTML = result;
+}
+</script>
+</head>
+<body>
+  <h4>우리나라 좋은나라 대<sup>10</sup>한민국 만세~~ 독<sup>20</sup>도는 우리땅~~A<sup>29</sup>BCabc0123</h4>
+  
+  <input type="button" value="charAt" onclick="charAt()">
+  <div></div>  <br>
+  
+  <input type="button" value="(last)indexOf" onclick="indexOf()">
+  <div></div>  <br>
+  
+  <input id="txt">
+  <input type="button" value="trim" onclick="trim()">
+  <div></div>  <br>
+  
+  <input type="button" value="substring외" onclick="substring()">
+  <div></div>  <br>
+  
+  <input type="button" value="split" onclick="split()">
+  <div></div>  <br>
+  
+  <textarea></textarea>
+  <input type="button" value="replace" onclick="replace()">
+  <div></div>  <br>
+  
+</body>
+</html>

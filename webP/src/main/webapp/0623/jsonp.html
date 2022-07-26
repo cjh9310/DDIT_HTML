@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <script>
+  
+  //jqeury- jsonp - get
+  $.ajax({
+// 	  url : 'https://www.flickr.com/services/feeds/photos_public.gne?tags=cat&format=json',
+// 	  url : 'http://yoonbumtae.com/util/misc/jsonp-example/',
+	  url : 'http://apis.data.go.kr/6430000/goodRestaService1/getGoodResta1?serviceKey=fZyZd8Aa3ciGxwCiU6sVUlIwwJbDvoD6YZg2%2F%2B9AtWIql%2F9bRTtdX%2FX5kegJaKMmNbaGJazfNS3k2nHtzEISZA%3D%3D&currentPage=1&perPage=10',
+// 	  jsonpCallback: 'sendJsonp',
+// 	  type : 'get',	//default get
+	  success:function(data){
+		  //console.log(data);
+		  let arrData = data.body;
+		  let result = "";
+		  $.each(arrData,function(){
+			  result += this.BSSH_NM + " / ";
+			  $('body').html(result);
+		  });
+		  
+// 		  $('body').html(data.google);
+	  },
+	  error:function(xhr){
+		  alert("상태 : " + xhr.status);
+	  },
+	  dataType : 'jsonp'
+  })
+  
+  function sendJsonp (d){
+	  console.log("메소드 >> " + d);
+	  $('body').html("메소드 >> " + d.yahoo);
+  }
+  
+  function jsonFlickrFeed (data){
+	  //console.log(data);
+	  let itemArr = data.items;
+	  for(i=0; i<itemArr.length; i++){
+		  let src = itemArr[i].media.m;
+		  
+		  let img = document.createElement('img');
+		  img.src = src;
+		  
+		  document.body.appendChild(img);
+	  }
+  }
+  </script>
+<!--   <script src="https://www.flickr.com/services/feeds/photos_public.gne?tags=cat&format=json"></script> -->
+</body>
+</html>

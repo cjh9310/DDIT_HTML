@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 1px solid red;
+  width: 50%;
+  height: 200px;
+  margin: 4px;
+}
+img {
+  width: 100px;
+}
+</style>
+<script>
+function allowDrop(){
+	// 기본전제 : 요소들은 겹쳐질 수 없다.
+	
+	// dragover 이벤트 : 유효한 대상 위로 드래그 되는 순간
+	event.preventDefault(); //기본기능 정지하기..
+	// dargover의 이벤트를 정지시킴
+	// = 대상위로 드래그 되고 있음의 상태를 중지시킴 (=드롭 허용)
+}
+function drag(){
+										//event.target => drop이벤트의 대상
+	event.dataTransfer.setData("text", event.target.id);//id 속성이 있어야 함
+}
+function drop(){
+	event.preventDefault();
+	let data = event.dataTransfer.getData("text");
+	// event.target => drop 이벤트의 대상
+	event.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+<!--  
+1. drag) 드래그를 사용하기 위해 draggable=true 속성 적용
+2. drag) ondragstart발생 시 dataTransfer에 타겟아이디 설정
+3. drop) ondragover발생시 드롭의 허용(allowDrop)을 위해 기본 이벤트 중지시킴
+4. drop) ondrop발생 시 dataTransfer에 저장된 타겟아이디 위치에 append
+-->
+
+  <div ondrop="drop()" ondragover="allowDrop()"></div>
+  <img id="drag1" src="../images/jjang.jpg" draggable="true" ondragstart="drag()">
+</body>
+</html>

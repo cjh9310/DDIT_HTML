@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+#bb {
+  border: dashed orange 5px;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div>
+    <input> <br>
+    <input type="password">
+    <input type="button" value="전송">
+    <div id="aa"></div>
+    <div id="bb"></div>
+  </div>
+<script>
+  $('input:button').on('click',function(){
+	//요청데이터 가져오기
+	let v_id = $(':text').val();
+	let v_pw = $(':password').val();
+    let data = `id=${v_id}&pw=${v_pw}`;
+
+// $.ajax({url,type,data,success...}) - 가장 일반적인 jquery ajax
+// $.get(url, data, success, dataType)
+  /* $.get(
+	'ajax_post.jsp',
+	data,
+	function(a){
+	  let result = "";
+	  if(a.cd == "ok"){
+// 	  if(a.cd.equals("ok")){	//javascript equals() x
+		result += `${v_id}님 환영해!!`;
+	  }else{
+		result += `${v_id}님 로그인실패!!`;
+	  }
+	  $('#aa').text(result);
+	},
+	'json'
+  ); */
+
+// $.post(url, data, success, dataType)
+
+// $.getJSON(url, data, success)
+  $.getJSON(
+	'ajax_post.jsp',
+	data,
+	function(a){
+	  let result = "";
+	  if(a.cd == "ok"){
+		result += `${v_id}님 환영해!!`;
+	  }else{
+		result += `${v_id}님 로그인실패!!`;
+	  }
+	  $('#bb').text(result);	  
+	}
+  );
+  // $.getScript() : get방식으로 요청전달후 처리결과를 스크립트 파일로 반환 받음
+
+  // load() : 서버로부터 응답받은 데이터를 지정된 요소에 배치
+  //		  ajax보다 간소화된 비동기 호출 메소드로,
+  //		  불필요한 리소스를 줄이고 코드를 간결하게 함
+  
+  });
+</script>
+</body>
+</html>

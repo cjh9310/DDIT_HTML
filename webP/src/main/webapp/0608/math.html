@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<pre>
+	random() : 난수를 발생시키는 메소드
+				0~1 미만(1 포함하지 않음) 구간에서 부동소수점 난수 생성
+	난수 : 정의된 범위 내 무작위로 추출된 수
+</pre>
+<script>
+
+// 0 <= random() < 1
+document.write("0 <= random() < 1 | " + Math.random() + "<br>");
+
+// floor() 이용 - 소수점 이하 버림
+document.write("floor() | " + Math.floor(Math.random()) + "<br>");
+//0 <= random() <= 9
+document.write("0 <= random() <= 9 | " + Math.floor(Math.random()*10) + "<br>");
+//0 <= random() <= 10
+document.write("0 <= random() <= 10 | " + Math.floor(Math.random()*11) + "<br>");
+//1 <= random() <= 10
+document.write("1 <= random() <= 10 | " + Math.floor(Math.random()*10+1) + "<br>");
+//2 <= random() <= 5
+document.write("2 <= random() <= 5 | " + Math.floor(Math.random()*4+2) );
+
+//교재 
+// var ranNum = Math.round(Math.random()*(10-1)+1);
+// document.write(ranNum);
+</script>
+
+</body>
+</html>

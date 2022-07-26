@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+img {
+  width: 150px;
+  height: 120px;
+}
+div{
+	padding : 10px;
+}
+.border {
+	border : 3px double red;
+}
+.pColor {
+  color: green;
+}
+.pBack {
+  background-color: gold;
+}
+.pBack1 {
+  background-color: purple;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('input:button').on('click',function(){
+// 		$('p').css('color','blue');
+		$('p').addClass('pColor');
+	});
+	
+	$('p').on('click',function(){
+// 		$(this).addClass('pBack');
+		
+		//hasClass를 이용한 add-remove 
+// 		if($(this).hasClass('pBack')){
+// 		//지정되어 있으면 remove
+// 			$(this).removeClass('pBack');
+// 		}else{
+			//지정되어 있지 않으면 addClass
+// 			$(this).addClass('pBack');
+// 		}
+		
+		$(this).toggleClass('pBack1');
+	
+	});
+	
+	//비어있는 div에 mouseover, mouseout 이벤트로 bBack적용하기     실용성 있음
+	$('div:empty').on('mouseover',function(){
+		$(this).addClass('pBack');
+	});
+	$('div:empty').on('mouseout',function(){
+		$(this).removeClass('pBack');
+	});
+	
+	//이미지에 mouseover, mouseout으로 border add-remove하기
+// 	$('img').on('mouseover',function(){
+//		$(this).addClass('border');
+//	});
+//	$('img').on('mouseout',function(){
+//		$(this).removeClass('border');
+//	});
+
+
+//hover() 로 mouseover, mouseout을 간단히 작성
+//	$('img').hover(function(){
+//		$(this).addClass('border');
+//	},function(){
+//		$(this).removeClass('border');
+//	});
+
+$('img').on('click',function(){
+	$(this).toggleClass('border');
+});
+	
+	
+});
+</script>
+</head>
+<body>
+  <div>
+    <input type="button" value="확인">
+    <p>Click!!</p>
+    <p>Click!!</p>
+    <p>Click!!</p>
+    <p>Click!!</p>
+    <p>Click!!</p>
+    
+    <div></div>
+    
+    	<img src="../images/dog.jpg" alt=""> 
+		<img src="../images/cat.jpg" alt="">
+		<img src="../images/jjang.jpg" alt="">
+		<img src="../images/wd.jpg" alt="">
+  </div>
+</body>
+</html>

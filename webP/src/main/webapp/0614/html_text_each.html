@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	대상요소 내용 가져오기
+	text() : 태그를 포함하지 않는 내용 가져옴
+	html() : 태그를 포함한 내용 가져옴 - 첫번째 항목만
+</pre>
+  <p>1<span>홍길동</span></p>
+  <p>2<span>양길동</span></p>
+  <p>3<span>노길동</span></p>
+  <input type="button" value="text">
+  <input type="button" value="html">
+<script>
+$('[value="text"]').on('click',function(){
+	console.log( $('p').text() );
+});
+$('[value="html"]').on('click',function(){
+	console.log( $('p').html() );
+});
+
+let result = "";
+//선택자를 이용한 each() - $(선택자).each(fn)
+$('p').each(function(a,b){	//p요소의 갯수만큼 반복
+	//p요소의 첫번째 값만 가져옴 - X
+// 	result += $('p').html() + "\n";	 
+
+	//each()-this사용으로 순차적인 값을 받음
+// 	result += $(this).html() + "\n";
+	
+	//index 활용
+	result += $('p').eq(a).html() + "\n";
+	
+	//value(item) 활용
+// 	result += $(b).html() + "\n";
+});
+console.log(result);
+
+
+let obj = {
+  'a' : 'aa',
+  'b' : 'bb',
+  'c' : 'cc',
+  'd' : 'dd'
+};
+
+//Object(객체)를 이용한 each() - $.each(object,fn)
+$.each(obj,function(){
+  //console.log(this);
+  console.log( Object.keys(obj) );
+});
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <h4>요소 추가 /삭제</h4>
+  <button type="button" onclick="add()">추가</button>
+  <button type="button" id="remove">삭제</button>
+  <button type="button" id="addRemove">추가/삭제</button>
+  <div></div>
+
+<script>
+let str = ['봄','여름','가을','겨울','spring','summer','autumn','winter'];
+
+document.querySelector('#addRemove').addEventListener('click', function(){
+	
+	  // 랜덤 문자 생성 - createTextNode()
+	  let rnd = Math.floor(Math.random()*str.length);
+	  let txtnd = document.createTextNode(str[rnd]);
+
+	  //삭제 버튼 생성 - createElement()
+	  // 타입1
+// 	  let btn = document.createElement('input');
+// 	  // <input type = "button" value = "삭제" onclick = "">
+// 	  btn.type = "button";
+// 	  btn.value = "삭제"
+	  
+	  // 타입2
+	  //<button type ="button"> DELETE</button>
+	  let btn = document.createElement('button');
+	  btn.type = "button";
+	  btn.textContent = "Del";
+
+
+
+
+	  btn.onclick=function(){
+		this.parentNode.remove();  //p요소에 접근하고 remove
+	  }
+	  
+	  
+	  //랜덤문자, 삭제버튼 출력 영역
+	  let pEle = document.createElement('p');
+	  pEle.appendChild(txtnd);
+	  pEle.appendChild(btn);
+	  
+	  //출력영역에 txtnd가 삽입된 pEle를 추가
+	  document.querySelector('div').appendChild(pEle);
+
+});
+
+document.querySelector('#remove').addEventListener('click',function(){
+	//대상 선택후 삭제 - removeChild()
+	let parent = document.querySelector('div');
+	//부모를 대상으로 제거할 상대를 선택
+	let child = parent.firstChild;
+	parent.removeChild(child);
+});
+
+function add(){
+  let rnd = Math.floor(Math.random()*str.length);
+  //랜덤 문자열로 textNode 생성
+  let txtnd = document.createTextNode(str[rnd]);
+  //txtnd를 삽입할 공간 생성
+  let pEle = document.createElement('p');
+  pEle.appendChild(txtnd);
+  //출력영역에 txtnd가 삽입된 pEle를 추가
+  document.querySelector('div').appendChild(pEle);
+  
+}
+</script> 
+  
+</body>
+</html>

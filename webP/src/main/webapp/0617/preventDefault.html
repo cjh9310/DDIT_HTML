@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<!--  기본으로 정의된 이벤트를 작동하지 못하게 함 -->
+
+	<a href="http://www.naver.com">이동</a> <br>
+	
+	<textarea></textarea> <br>
+
+	<input type = "checkbox"> <br>
+	
+	<input type = "file"> <br>
+	
+	<form>
+	  <input name = "keykeykey">
+	  <input type = "submit">
+	</form>
+
+<script>
+$('a').on('click',function(){
+	event.preventDefault();    // a 이벤트 작동 정지
+});
+$('textarea').on('keydown',function(){
+	event.preventDefault();
+});
+$('input:checkbox').on('click',function(){
+	event.preventDefault();
+});
+$('input:file').on('click',function(){
+	event.preventDefault();
+});
+
+$('input:submit').on('click',function(){   //submit 대신 reset도 가능
+	event.preventDefault();
+});
+
+
+</script>
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 1px solid;
+  border-radius: 20px;
+  height: 20px;
+  padding: 40px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+  <input type="button" 
+  	value="setInterval" onclick="randomColor(this);">
+  <input type="button" value="clear" onclick="clr();">
+  <div>
+  	setInterval(fn,ms) : ms에 지정된 시간이 경과될 때마다
+  	random() 이용해서 배경색 변경
+  </div>
+</body>
+<script>
+let a;	//전역으로 선언
+let b; 	//전역
+function clr(){
+	//사라진 버튼을 다시 보여지게 함 또는 활성화 시키기
+	//버튼(setInterval btn) 자체를 대상으로 스타일 조정필요
+// 	b.style.display = "inline";
+	//b.setAttribute('enabled',true); //처리안됌
+	b.removeAttribute('disabled');
+	//clearInterval() - 기능정지
+	clearInterval(a);
+}
+function randomColor(btn){
+	//실행 후 버튼 사라짐 또는 버튼 비활성화 시키기
+	//console.log(btn);	//button자체
+// 	btn.style.display = "none";
+	btn.setAttribute('disabled',true);
+	b = btn;
+	
+	//setInterval(fn,ms);
+	a = setInterval(function(){
+		//10진수(0~255) 색상 생성
+		let cr = parseInt(Math.random()*256).toString(16);
+		let cg = parseInt(Math.random()*256).toString(16);
+		let cb = parseInt(Math.random()*256).toString(16);
+		
+		document.querySelector('div')
+// 			.style.backgroundColor = `rgb(${cr},${cg},${cb})`;//10진수
+			.style.backgroundColor = `#${cr}${cg}${cb}`;//16진수
+	}, 1000);
+}
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+*{
+	font-weight : bold;
+}
+h3{
+	text-align : center;
+}
+div,p{
+	border : 1px solid lightgray;
+	margin : 10px; /* 바깥여백*/
+}
+/* 공백('')은 자식을 포함한 모든 후손을 선택 */
+#d1 div {
+	border : dashed orange;
+}
+#d1 p {
+	border : inset blue;
+}
+/* #d1>div , #d1>p => 자식 */
+#d1> div {
+	border : solid pink 4px;
+}
+#d1 > p {
+	border : dotted green 3px;
+}
+/* #d1 > div > p 후손에 접근법 */
+#d1 > div > p {
+	border : 1px solid gold;
+}
+/* #d1 > div > div 후손에 접근법 */
+#d1 > div > div {
+	border : 1px solid blue;
+}
+#p1~p {
+	color : green;
+}
+#p1~* {
+	background-color : lightblue;
+}
+/* #p1+p로 적용하면 실행이 안됨. div로 실행해야 되는데 p는 div가 아니니깐*/
+#p1+div {
+	color : red;
+}
+</style>
+</head>
+<body>
+	<h3>자손/자식 selector</h3>
+	
+	<div id= "d1">
+		<p>#d1의 자식'p'</p>
+			<div>#d1의 자식'div'
+				<p>#d1의 후손'p'</p>
+				<div>#d1의 후손'div'</div>
+			</div>
+		</div>
+		<div>
+			<p id = "p1"> 형제1 p</p>
+			<div> 형제2 div</div>
+			<p> 형제3 p</p>
+			<p> 형제4 p</p>
+			<p> 형제5 p</p>
+			<p> 형제6 p</p>
+			
+		
+		
+		
+		
+		
+		</div>
+</body>
+</html>

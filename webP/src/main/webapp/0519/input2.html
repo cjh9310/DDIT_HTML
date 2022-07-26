@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href= "../css/outstyle.css" rel="stylesheet">
+<style>
+pre {
+	background-color: lightblue; 
+	/*더 늦게 적용되어서 결과적으로 blue색상이 적용 된다 */
+	/*selector문법 '{'전에 공백 필수!  */
+}
+
+
+</style>
+</head>
+<body>
+
+<pre>
+input type=radio    여러 값 중 하나만 선택가능
+input type=checkbox 하나 또는 여러 값 선택가능
+input type=hidden   보여지지 않지만 서버로 전송되는 숨겨진 값
+</pre>
+	<form action = "test2.jsp" method= "post">
+	이름 : <input name="name"> <br>
+	성별 : 남<input type="radio" name="gender" value = "남자">
+		  여<input type="radio" name="gender" value = "여자"> <br>
+	히든 >> <input type = "hidden" name = "hidden" value = "나는 일급비밀..">
+	좋아하는 것 : 
+	<input type ="checkbox" name= "food" value= "떡볶이">떡볶이
+	<input type ="checkbox" name= "food" value= "파스타">파스타
+	<input type ="checkbox" name= "food" value= "곱창">곱창
+	<input type ="checkbox" name= "food" value= "냉면">냉면
+	<input type ="checkbox" name= "food" value= "탕수육">탕수육 <br>
+	파일 : <input type="file" name="file"> <br>
+	
+	<input type = "button" value = "input타입의 버튼"> <br>
+	<button type = "button">button타입 버튼이야.</button> <br>
+<!-- 	type = "button"은 순수한 버튼만 가지고 있고(기능x) -->
+<!-- 다른건 동일한데 버튼만 차이가 있다. -->
+<!-- 	기능이 존재하는 버튼 -->
+	<button>button</button>
+	<input type = "image" src="">
+	<input type = "submit">
+	<input type = "reset">
+	
+	</form>
+	
+</body>
+</html>

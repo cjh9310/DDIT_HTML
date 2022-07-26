@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body {
+  outline: green solid; 
+}
+.ex1 {
+  border: 3px solid;
+  padding: 10px;
+  margin: 10px;
+  background-color: yellow;
+  height: 100px;
+  width: calc(50% - 20px);
+  float: left;
+  box-sizing: border-box;
+  
+  /*
+  	box-sizing: content-box가 기본 상태이며
+  	width 값 계산시 content영역만 적용
+  	
+  	box-sizing: border-box로 변경했을 경우
+  	width 값 계산시 content + border + padding 영역 적용
+  */
+}
+.ex2 {
+  background-color: lightblue;
+  border: solid;
+  width: calc(100%/3);
+  height: 100px;
+  float: left;
+  box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+  <div class="ex1"></div>
+  <div class="ex1"></div>
+  
+  <hr>
+  
+  <div class="ex2">1</div>
+  <div class="ex2">2</div>
+  <div class="ex2">3</div>
+</body>
+</html>

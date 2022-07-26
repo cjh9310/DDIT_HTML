@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+h4 {
+  display: inline-block;
+}
+div {
+  border: solid green;
+  height: 20px;
+}
+</style>
+</head>
+<body>
+<script>
+  var i;
+  var fruit = new Array();
+  fruit[0] = "apple";
+  fruit[1] = "banana";
+  fruit[2] = "orange";
+  
+//   for(i=0; i<fruit.length; i++){
+// 	  document.write(fruit[i] + "<br>");
+//   }
+  for(x in fruit){
+	  document.write(fruit[x] + "<br>");
+  }
+</script>
+  
+<script src="../js/outScript.js"></script>
+  
+  <h4>리터럴로 배열 생성하기</h4>
+  <input type="button" value="생성" onclick="proc1()"> <br>
+  <div id="d1"></div>
+  
+  <h4>생성자로 배열 생성하기1</h4>
+  <input type="button" value="생성" onclick="proc2()"> <br>
+  <div id="d2"></div>
+  
+  <h4>생성자로 배열 생성하기2</h4>
+  <input type="button" value="생성" onclick="proc3()"> <br>
+  <div id="d3"></div>
+
+
+
+
+
+
+</body>
+</html>

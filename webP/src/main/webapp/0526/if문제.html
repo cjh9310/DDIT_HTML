@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h4> 숫자 2개와 연산자를 입력받아 계산결과를 출력하시오.</h4>
+	<input type="button" value="계산" onclick="calc()">
+	<div id ="result"></div>
+<script>
+// 1. 
+  
+  let calc = function(){
+  let x = parseInt(prompt("정수를 입력하세요"));
+  let ch = prompt("연산자를 입력하세요");
+  let y = parseInt(prompt("정수를 입력하세요"));
+  
+  let sum;
+  if(ch == "+") {
+	  sum= x+y;
+  }else if(ch== "-") {
+	  sum= x-y;
+  }else if(ch == "/"){
+	  sum= x/y;
+  }else if(ch == "*") {
+	  sum= x*y;
+  }else {
+	 alert("연산자를 입력하세요");
+	 return calc();
+  }
+//  document.write(x+ch+y+"="+sum); // 테스트용으로만 사용 (=문서덮어씀)
+	document.getElementById('result').textContent = x+ch+y+"="+sum;
+
+}
+
+</script>
+</body>
+</html>

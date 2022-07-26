@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#t1 {
+  background: yellow;
+}
+</style>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type="button" id="type_json" value="타입json">
+  <input type="button" id="type_html" value="타입html">
+  <div></div>
+<script>
+$('#type_html')/* .on('click',function(){
+	$.ajax({
+		url : 'lprod2.jsp',
+		success:function(data){
+			$('div').html(data);
+		},
+		error:function(xhr){
+			alert(xhr.status);
+		},
+		dataType: 'html'
+	});
+}); */
+
+let req = new XMLHttpRequest();
+//자바스크립트 형식으로 ajax  - type HTML
+document.querySelector('#type_html').addEventListener('click',()=>{
+  req.open('get','lprod2.jsp');
+  req.send();
+  req.onreadystatechange=()=>{	//화살표함수 this사용안됌
+	if(req.readyState == 4 && req.status == 200){
+		let data = req.responseText;
+		document.getElementsByTagName('div')[0].innerHTML = data;
+	}
+  };
+
+
+
+});
+
+//제이쿼리 형식으로 ajax
+/* $('#type_json').on('click',function(){
+	$.ajax({
+		url :  'lprod.jsp',	//jsp - mvc1패턴...
+// 		type : 'get',
+		success:function(data){
+			//table로 출력
+			let rst = "<table border='1'>";
+			rst += "<tr><td>ID</td><td>GU</td><td>NM</td></tr>";
+			
+			$.each(data,(i,v)=>{	//화살표 함수 (this사용못함..)
+				rst += `<tr><td>${data[i].id}</td>`
+				rst += `<td>${v.gu}</td>`
+				rst += `<td>${data[i].nm}</td></tr>`;
+			});
+			rst += "</table>";
+			$('div').html(rst);
+		},
+		error:function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+// 		complete
+		dataType: 'json'		
+	});
+}); */
+
+//자바스크립트 형식으로 ajax
+let v_id = document.getElementById('type_json');
+v_id.addEventListener('click',function(){
+  
+  //요청
+  req.open('get', 'lprod.jsp');	//json Object array
+  req.send();
+  //응답
+  req.onreadystatechange=function(){
+	if(this.readyState == 4 && this.status == 200){
+		let data = JSON.parse(this.responseText);
+		let result = "<table border=1>";
+		result += `<tr id="t1"><td>id</td><td>gu</td><td>nm</td></tr>`;
+		
+		for(let i=0; i<data.length; i++){
+		  result += `<tr><td>${data[i].id}</td>`;
+		  result += `<td>${data[i].gu}</td>`;
+		  result += `<td>${data[i].nm}</td></tr>`; 
+		}
+		result += `</table>`;
+		document.querySelector('div').innerHTML = result;
+	}
+  }
+  
+	
+});
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

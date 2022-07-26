@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+label {
+  display: inline-block;
+  width: 80px;
+}
+span {
+  display: inline-block;
+  background-color: yellow;
+  width: 100px;
+  height: 20px;
+/*   border: solid red; */
+}
+</style>
+</head>
+<body>
+  <form>
+    <label for="x">첫번째 값</label>
+    <input id="x"> <br>
+    
+    <label for="y">두번째 값</label>
+    <input id="y"> <br>
+    
+    <label for="result">결과 값</label>
+    <input id="result"> <br>
+    
+    <input type="button" value="+" onclick="calc('+')">
+    <input type="button" value="-" onclick="calc('-')">
+    <input type="button" value="*" onclick="calc('*')">
+    <input type="button" value="/" onclick="calc('/')">
+    
+    <p>
+      <label for="sp1">첫번째 값</label>
+      <span id="sp1"></span>
+    </p>
+    <p>
+      <label for="sp2">두번째 값</label>
+      <span id="sp2"></span>
+    </p>
+    <p>
+      <label for="sp3">결과 값</label>
+      <span id="sp3"></span>
+    </p>
+  </form>
+<script>
+let xVal;
+let yVal;
+function calc(apple){
+
+	xVal = parseInt(document.getElementById('x').value);
+	yVal = parseInt(document.getElementById('y').value);
+	
+	console.log(typeof xVal);
+	
+	//비교연산
+	let result = "";
+	switch(apple){
+		case '+':
+			//메소드호출해서 값 리턴해와서 활용
+			result = add();
+			break;
+		case '-':
+			result = sub();
+			break;
+		case '*':
+			result = multi();
+			break;
+		case '/':
+			result = divd();
+			break;
+	}
+	document.getElementById('result').value = result;
+	document.getElementById('sp1').innerText = xVal;
+	document.getElementById('sp2').textContent = yVal;
+	document.getElementById('sp3').innerText = result;
+}
+function add(){
+	return xVal + yVal;
+}
+function sub(){
+	return xVal - yVal;
+}
+function multi(){
+	return xVal * yVal;
+}
+function divd(){
+	let rst = xVal / yVal;
+	return rst.toFixed(5);
+}
+</script>
+</body>
+</html>

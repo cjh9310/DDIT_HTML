@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src= "../js/jquery-3.6.0.min.js"></script>
+<style>
+img {
+	width : 100px;
+}
+</style>
+</head>
+<body>
+	<img src="../images/wd.jpg" alt="">
+	<input type ="button" value="hide">
+	<input type ="button" value="show">
+	<input type ="button" value="toggle">
+	<input type ="button" value="slideUp">
+	<input type ="button" value="slideDown">
+	<input type ="button" value="slideToggle">
+	<input type ="button" value="fadeOut">
+	<input type ="button" value="fadeIn">
+	<input type ="button" value="fadeToggle">
+<script>
+// $('[value=hide]').on('click',function(){
+// 	$('img').hide('slow');
+// 	alert("숨김..");
+// });
+$('[value=hide]').on('click',function(){
+	$('img').hide('slow',function(){
+		alert("숨김..");
+	});
+});
+$('[value=show]').on('click',function(){
+	$('img').show(100);
+});
+$('[value=toggle]').on('click',function(){
+	$('img').toggle('fast')
+});
+$('[value=slideUp]').on('click',function(){});
+$('[value=slideDown]').on('click',function(){});
+$('[value=slideToggle]').on('click',function(){});
+$('[value=fadeOut]').on('click',function(){});
+$('[value=fadeIn]').on('click',function(){});
+$('[value=fadeToggle]').on('click',function(){});
+
+
+</script>
+</body>
+</html>

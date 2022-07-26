@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+.color {
+  background-color: yellow;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div id="d1">
+    <ul>
+      <li>index0</li>
+      <li>index1</li>
+      <li>index2</li>
+      <li>index3</li>
+      <li>index4</li>
+      <li>index5</li>
+      <li>index6</li>
+    </ul>
+    <input type="button" value="btn" class="btn">
+  </div>
+<script>
+/* 
+	filter() : 선택요소 중 특정조건에 일치하는 요소를 반환
+		- 특정조건을 선택자, 변수, 함수를 통해 지정할 수 있음 
+	not()	 : 선택요소 중 특정조건에 일치하는 요소를 제거하고 반환
+	is()	 : 선택요소간에 일치여부를 boolean값을 반환
+*/
+$('.btn').on('click',function(){
+	//선택자 활용
+// 	$('li').filter(':even').addClass('color');
+	
+	//변수 활용
+// 	let list = $('li').eq(3);
+// 	$('li').filter(list).addClass('color');
+	
+	//함수 활용
+	$('li').not(function(i){
+		return i%3 == 0;
+	}).addClass('color');
+});
+</script>
+
+  <p>p요소의 부모가 div인지 비교하여 참일 때 스타일 적용</p>
+  <div id="d2">
+    <div>
+      <p>부모(div)있는 p</p>
+    </div>
+    
+    <p>부모없는 p</p>
+    
+    <div>
+      <p>부모(div)있는 p</p>
+    </div>
+    
+    <form>
+      <p>부모(form)있는 p</p>
+    </form>
+  </div>
+<script>
+$('#d2 p').on('click',function(){
+	if($(this).parent().is('#d2 div')) {
+		$(this).parent().addClass('color');
+	}else{
+		alert("대상요소가 아님");
+	}
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

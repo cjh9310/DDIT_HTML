@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script>
+	function changeColor(c){
+		document.getElementById("target").style.backgroundColor = c;
+	}
+	
+	window.onload = function(){
+		
+		//target을 파랑색으로  방법1
+		document.getElementsByTagName('input')[0].onclick = function(){
+// 		console.log(this.getAttribute('value'));
+		let a = this.getAttribute('value');
+		document.querySelector('#target').style.backgroundColor = a;
+		}
+		// onclick - 동일한 요소에 적용시 덮어쓰는 현상 발생
+		document.getElementsByTagName('input')[0].onclick = function(){
+			console.log(">>>>>>>>>>>>>>>>> 라디오버튼 1번");
+		}
+		
+		
+		//target을 녹색으로  방법2
+		let v_input1 = document.getElementsByTagName('input')[1];
+		v_input1.addEventListener('click', function(){
+		let a = this.getAttribute('value');
+		document.querySelector('#target').style.backgroundColor = a;
+		})
+		// addEventListener() - 큐에 이벤트를 담고 순차적으로 활용
+		let v_input2 = document.getElementsByTagName('input')[1];
+		v_input2.addEventListener('click', function(){
+			console.log(">>>>>>>>>>>>>>>>> 라디오버튼 2번");
+		})
+	}	
+	</script>
+</head>
+<body id ="target">
+	<form method = "POST">
+		<input type = "radio" name = "C1" value = "Lightblue">파랑색
+		<input type = "radio" name = "C1" value = "Lightgreen">녹색
+	
+	
+<!-- 	<input type = "radio" name = "C1" value = "v1" -->
+<!-- 			onclick = "changeColor('lightblue')">파랑색 -->
+<!-- 	<input type = "radio" name = "C1" value = "v2" -->
+<!-- 			onclick = "changeColor('lightgreen')">녹색	 -->
+	</form>
+</body>
+</html>

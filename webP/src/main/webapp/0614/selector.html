@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>
+  문단 안에 <a>링크</a> 태그가 있다
+  두번째 <span><a>링크</a></span>는 손자이다
+  </h2>
+<script>
+//기본 선택, 자식(자손) 선택
+	$('h2').css('border','solid red');
+	//h2의 자식 a - 테두리 solid
+	$('h2>a').css('border','solid black');
+	//h2의 후손 a - 배경색 yellow
+	$('h2 a').css('backgroundColor','yellow');
+	//h2의 손자(후손) a - 글자색 red
+	$('h2 a').css('color','red');
+//형제 선택
+//속성 선택
+$(function(){
+	//title속성 가진 p요소 - 배경색 yellow
+	$('p[title]')
+
+	//type속성이 password인 요소- 테두리 red
+	$('[type=password]')
+});
+</script>
+
+  <p>일반 문단</p>
+  <p title="툴팁">타이틀 가진 문단</p>
+  회원번호<input type="text">
+  회원번호<input type="password">
+</body>
+</html>

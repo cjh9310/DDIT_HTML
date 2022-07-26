@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+img {
+  width: 200px;
+  position: relative;	/* 상대적으로 이동가능한 상태를 만듦 */
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div id="d1">
+	<img src="../images/wd.jpg" alt="">
+	<input type="button" value=">>>>" id="btn1">    
+	<input type="button" value="<<<<" id="btn2">    
+  </div>
+<script>
+// + 기호는 요소를 안쪽으로 위치시킴 / - 기호는 바깥쪽으로 위치
+  $('#btn1').on('click',function(){
+//  $(selector).animate({params}, speed, callback); {params} 자리가 동일해야 실행된다. ex) left right bottom등
+	$('img').animate({left : '+=10px'},1000);
+  });
+  $('#btn2').on('click',function(){
+	$('img').animate({left : '-=10px'},1000);
+  });
+</script>
+
+	<input type="button"value="확인"id="btn3">
+	<p id="p1">무궁화 꽃이 피었습니당 - CSS</p>
+	<p id="p2">무궁화 꽃이 피었습니당 - animate</p>
+	
+<script>
+$('btn3').on('click',function(){
+	$('#p1').css('font-size','+=2px');
+	$('#p2').animate({'font-size':'+=2px'}, 100);
+});
+
+
+</script>
+
+
+</body>
+</html>

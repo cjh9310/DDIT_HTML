@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<script>
+$(function(){
+  $('<button>이미지추가</button>').appendTo('body');
+  
+  $('button').on('click',function(){
+	  $('<img>',{
+	    'src' : '../images/jjang.jpg',
+	    'alt' : '짱구',
+	    'width' : '100px',
+	    'click' : function(){
+	    	
+	    }
+	  }).appendTo('div');
+	  
+  });
+  
+});
+</script>
+  <div></div>
+</body>
+</html>

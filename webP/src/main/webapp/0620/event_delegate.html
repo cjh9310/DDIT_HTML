@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	이벤트 등록 형식 : delegate (위임,대리)
+	부모의 이벤트를 물려받아 이벤트를 연결하는 방식
+	
+	* 동적 요소는 부모가 될 수 없다 
+</pre>
+  <div class="box">
+    <input type='button' class="btn" value="버튼">
+    <input type='button' id="clear" value="해제">
+  </div>
+<script>
+//	delegate방식 : $(parentSel).delegate('childSel','event',fn)
+//				   $(parentSel).on('event','childSel',fn)
+$('.box').on('click','.btn',function(){ // '.box' 대신 document 가능
+	//새버튼 생성 - 동적요소
+	$('<input>',{
+		'type' : 'button',
+		'class' : 'btn',
+		'value' : '새버튼'
+	}).appendTo('.box');
+});
+// 새버튼 생성 중지
+$('#clear').on('click',function(){
+	$('.box').off('click');            // '.box' 대신 document 가능
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

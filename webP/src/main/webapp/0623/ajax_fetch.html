@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	클라이언트-서버간 데이터를 주고 받을 때 HTTP 통신을 사용한다
+	자바스크립트에서는 HTTP통신으로 ajax, fetch, Axios 등을 사용함
+	
+	ajax
+		동적 웹페이지를 만들기 위해 개발된 기법
+		전체 페이지 로딩 없이 일부분만 갱신하게 해주며
+		기술의 핵심은 XMLHttpRequest객체이다
+	
+	fetch 
+		내장 라이브러리라서 import없이 사용 가능하다
+		XMLHttpRequest 대체로 나왔기 때문에 더 쓰기 편함
+		*Promise객체를 사용하기 때문에 비동기통신에 더 적합
+		구형 브라우저는 지원하지 않음
+		ex) fetch('요청url').then(요청이 끝나고 할일)
+		
+</pre>
+
+  <div id="d1">
+    <button type="button" onclick="loadDoc()">Change Content- AJAX</button>
+  </div>
+
+<script>
+function loadDoc(){
+	const xhr = new XMLHttpRequest();
+	
+	xhr.onload=function(){
+		document.getElementById('d1').innerHTML = this.responseText;
+	}
+	xhr.open('get','../0621/animate.html');
+	xhr.send();
+}
+</script>
+
+  <div id="d2">
+    <button type="button" id="btn1">Change Content- fetch</button>
+  </div>
+
+<script>
+$('#btn1').on('click',function(){
+  fetch('../0621/animate.html')
+  	//text() : Response객체 => 문자열로 변환
+  	//json() : Response객체 => javascript object로 변환
+  		
+  		//화살표함수 사용
+  		.then(resp => resp.text())	//첫 then >> Response객체
+  		.then(a => $('#d2').html(a));
+  		
+		//일반적인 무명함수 사용
+//   			.then(function(resp){
+//   				//console.log(resp.text());
+//   				return resp.text();
+//   			})
+//   			.then(function(a) {
+//   				$('div').html(a);
+//   			});
+});
+</script>
+
+  <div id="d3">
+    <button type="button" id="btn2">Change Content- fetch</button>
+  </div>
+<script>
+$('#btn2').on('click',function(){
+  fetch('../0622/jsonObjArr.jsp')
+  	//.then(console.log)	//최초 데이터는 Response객체
+	.then(resp => {
+// 		console.log(resp.json());
+		return resp.json();
+		})	
+	.then(resp => {
+		let result= '';
+		$.each(resp, function(i,v){
+			result += `${resp[i].name} <br>`;
+			result += `${this.addr} <br>`;
+			result += `${v.tel} <br><br>`;
+		});
+		
+		$('#d3').html(result);
+	});
+});
+</script>
+
+
+
+</body>
+</html>

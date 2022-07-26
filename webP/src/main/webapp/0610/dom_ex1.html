@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  font: 20px bold;
+}
+</style>
+</head>
+<body>
+<script>
+function addtext(t){
+  let node = document.createTextNode(t);
+  document.querySelector('#target')
+  	.appendChild(node);
+}
+</script>
+
+  <div id="target" 
+  	onclick="addtext('무궁화 꽃이 피었습니다')">
+    여기를 클릭하세요
+  </div>
+</body>
+</html>

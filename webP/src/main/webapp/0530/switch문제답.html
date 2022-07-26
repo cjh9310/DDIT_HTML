@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+h4 {
+  display: inline-block;
+}
+div {
+  border: 1px solid blue;
+  height: 20px;
+}
+</style>
+</head>
+<body>
+<script>
+function grade(){
+	let score = prompt("점수 입력하셈","100점 만점");
+	console.log(score/10);
+	
+	score = score/10;	//실수 데이터
+	if(score == 10 || score >= 9.0 && score <= 9.9){
+		document.getElementsByTagName('div')[0].innerText = "A";
+	}else if(score >= 8.0 && score <= 8.9){
+		document.getElementsByTagName('div')[0].textContent = "B";
+	}else if(score >= 7.0 && score <= 7.9){
+		document.getElementsByTagName('div')[0].innerText = "C";
+	}else if(score >= 6.0 && score <= 6.9){
+		document.getElementsByTagName('div')[0].textContent = "D";
+	}else if(score > 10 || score < 5){
+		document.getElementsByTagName('div')[0].innerText = "알 수 없는 학점";
+	}else{
+		document.getElementsByTagName('div')[0].textContent = "F";
+	}
+		
+	
+	
+	/* switch(parseInt(score/10)){	//정수 데이터
+	case 10:
+	case 9:
+		document.getElementsByTagName('div')[0].innerText = "A";
+		break;
+	case 8:
+		document.getElementsByTagName('div')[0].innerText = "B";
+		break;
+	case 7:
+		document.getElementsByTagName('div')[0].innerText = "C";
+		break;
+	case 6:
+		document.getElementsByTagName('div')[0].innerText = "D";
+		break;
+	case 5:
+	case 0:
+		document.getElementsByTagName('div')[0].innerText = "F";
+		break;
+	} */
+}
+</script>
+
+  <h4>점수를 입력받아 학점 출력</h4>
+  <input type="button" value="학점출력" onclick="grade()">
+  <div></div>
+</body>
+</html>
+
+
+
+

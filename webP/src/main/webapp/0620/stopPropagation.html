@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div, span {
+  border: solid;
+  padding: 20px;
+  margin: 20px;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+//span클릭 : 배경 빨강
+$(function(){
+  $('#sp').on('click',function(){
+	$(this).css('background','red');
+	event.stopPropagation();
+	// 즉, stopPropagation 은 부모태그로의 이벤트 전파를 stop 중지하라는 의미입니다.
+	// 아래처럼 부모가 같이 실행되는게 아니라 지정된 자식태그만 실행이 된다.
+  });
+//h1클릭 : 배경 초록
+  $('h1').on('click',function(){
+	$(this).css('background','green');
+  });
+});
+
+function f_grand(){
+  alert("할머니");
+}
+function f_mom(){
+  alert("엄니");
+}
+function f_na(){
+  alert("나");
+  event.stopPropagation();
+}
+</script>
+</head>
+<body>
+  <h1>큰 제목 안에 <span id="sp">작은 영역</span>이 있다</h1>
+  
+  <hr>
+  
+  <div onclick="f_grand()">할머니
+    <div onclick="f_mom()">엄마
+      <div onclick="f_na()">나</div>
+    </div>
+  </div>
+
+  <div id="d">
+    <span>
+      <button>클릭</button>
+    </span>
+  </div>
+<script>
+//랜덤색
+let arr = [];
+let randomColor = function(){
+  for(i=0; i<3; i++){
+// 	arr[i] = parseInt(Math.random()*256);
+	arr[i] = parseInt(Math.random()*256).toString(16);
+  }
+//   return `rgb(${arr[0]},${arr[1]},${arr[2]})`;
+  return `#${arr[0]}${arr[1]}${arr[2]}`;
+};
+
+$('button').on('click',function(){
+//   $(this).css('background', 'red');
+  $(this).css('background', randomColor);
+  event.stopPropagation();
+});
+$('span').on('click',function(){
+  $(this).css('border', `solid ${randomColor()}`);
+  event.stopPropagation();
+});
+$('#d').on('click',function(){
+  $(this).append("ㅋ");
+});
+</script>  
+</body>
+</html>

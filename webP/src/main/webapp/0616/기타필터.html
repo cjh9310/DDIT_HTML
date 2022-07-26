@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type='button' value='hidden'>
+  <input type='button' value='visible'> <br>
+  
+  <div>
+    <p>보이는 문단</p>
+    <p style="visibility: hidden">숨겨진 문단</p>
+    <p style="display: none">자리를 차지하지 못한 문단</p>
+    <p style="opacity: 0">투명한 문단</p>
+  </div>
+  
+  <hr>
+  <div id="hidden"></div>
+  <div id="visible"></div>
+<script>
+$('[value=hidden]').on('click',function(){
+	let rst_h = " [ :hidden에 해당하는 문단 ] <br>";
+	$('p:hidden').each(function(){
+		rst_h += $(this).text();
+	});
+	$('#hidden').html(rst_h); //위에 <br>태그(html)가 존재해서 text가 아니라 html사용
+});
+
+$('[value=visible]').on('click',function(){
+	let rst_v = " [ :visible에 해당하는 문단 ] <br>";
+	$('p:visible').each(function(){
+		rst_v += $(this).text() + "<br>";
+	});
+	$('#visible').html(rst_v);
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

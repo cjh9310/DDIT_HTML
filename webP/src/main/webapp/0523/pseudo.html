@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel = "stylesheet" href = "../css/outstyle.css">
+
+
+ <style>
+/* a의 밑줄 제거 */
+a {
+	text-decoration : none;
+}
+a:link {
+	color : red;
+}
+a:visited {
+	color : green;
+}
+
+a:hover {
+	text-decoration : underline;
+}
+a:active {
+	background-color : black;
+	color : white;
+	text-decoration : line-throught;
+}
+.p1:nth-child(odd) {
+/* 	아래의 설정을 축약한 것(순서 상관x) : border:2px solid green; */
+/*  단 폰트는 순서에 상관있음 */
+	border-width: 2px;
+	border-style: dotted;
+	border-color: navy;
+} /* (odd)홀수 값만 적용 */
+.p1:nth-child(even) {
+	border:2px dotted red;
+} /* (even)짝수 값만 적용 */
+.p1:nth-child(4) {
+	border: 4px solid;
+}
+.p1:nth-child(3n+1) {
+	background-color: black;
+	color:gold;
+}
+</style> 
+</head>
+<body>
+<pre>
+
+	pseudo class 의사클래스, 가상클래스
+	상태 또는 구조에 의한 선택 방법
+	상태 - :link, :visited, :hover, :active.. 등등
+	구조 - :nth-child(d), :nth-child(odd/even).. 등등
+</pre>
+	<div> <!-- 상태 연습 -->
+		<a href = "https://www.w3schools.com/">W3Schools</a>
+		<a href = "http://www.ddit.or.kr">대덕인재개발원</a>
+		<a href = "http://www.cgv.co,kr">CGV</a>
+		<a href = "http://www.naver.com">네이버</a>
+	</div>
+	
+	<div> <!-- 구조 연습 -->
+	<p class = "p1">디즈니+</p>
+	<p class = "p1">넷플릭스</p>
+	<p class = "p1">디즈니+</p>
+	<p class = "p1">넷플릭스</p>
+	<p class = "p1">디즈니+</p>
+	<p class = "p1">넷플릭스</p>
+	<p class = "p1">디즈니+</p>
+	<p class = "p1">넷플릭스</p>
+	</div>
+</body>
+</html>

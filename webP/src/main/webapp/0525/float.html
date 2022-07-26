@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+  width: 50px;
+  height: 40px;
+  border: 1px solid pink;
+  float: left;
+  background-color: gold;
+  opacity: .6;
+}
+p {
+  border: 2px solid green;
+  width: 40%;
+}
+span {
+  border: 2px solid blue;
+  
+}
+div:nth-last-of-type(2), div:last-of-type { /* E,F 세로정렬*/
+	clear:left;
+}
+</style>
+</head>
+<body>
+<pre>
+	요소를 왼쪽/오른쪽으로 띄워 배치시키는 속성
+	원래 이미지,텍스트 배치 용도였으나,
+	레이아웃으로 많이 사용되다가 -
+	요즘은 flex, grid의 사용으로 빈도가 줄어듦
+	
+	block요소에만 사용 가능하며 요소의 성격을 무시하므로
+	block요소를 inline처럼 배치할 때 주로 사용한다
+	
+	속성 적용을 해제할 때 clear 속성을 사용한다
+</pre>
+
+  <div>A</div>
+  <p>aaaaaaaaaaaaaaa</p>
+  <div>B</div>
+  <span>bc</span>
+  <div>C</div>
+  <p>cd</p>
+  <div>D</div>
+  <div>E</div>
+  <div>F</div>
+</body>
+</html>

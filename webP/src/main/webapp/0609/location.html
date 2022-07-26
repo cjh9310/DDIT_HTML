@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+// window.onload=function(){};
+// window.addEventListener('load',function(){});
+document.addEventListener('DOMContentLoaded',function(){
+	
+	//asign(), href
+	document.querySelector('#move')
+		.addEventListener('click',function(){
+// 			location.assign("http://www.naver.com");
+//			location.href="http://www.google.com";
+			location.assign("../0519/test.jsp?userId=aa&userPw=bb");
+		});
+	//reload()
+	let rld = document.querySelector('#reload');
+	rld.addEventListener('click', function(){
+		let str = ['HTML','JAVA','JAVASCRIPT','CSS','jQuery'];
+		let idx = parseInt(Math.random()*str.length);
+		let result = `<h4>${str[idx]}</h4>`;
+		document.querySelector('div').innerHTML = result;
+		
+		setTimeout(function(){
+			location.reload();
+		},1000);
+		
+	});
+	
+	//replace()
+	document.querySelector('#rep').addEventListener('click',function(){
+	location.replace("../0519/test.jsp?userId=don't&userPw=Back");
+	});
+	
+});	//문서준비(로딩)완료 이벤트 end
+</script>
+</head>
+<body>
+<!-- https://developer.mozilla.org:8080/en-US/search?q=URL#search-results-close-container -->
+<pre>
+	location : URL정보를 갖는 객체
+</pre>
+  <span>페이지 이동 - assign(), href</span>
+  <input type="button" value="이동" id="move"> <br><br>
+
+  <span>현재문서를 다시 로드 - reload()</span>
+  <input type="button" value="리로드" id="reload">
+  <div></div>
+  
+  <span>새문서로 이동후 이전 문서로 복귀 불가 - replace()</span>
+  <input type="button" value="한번가면복구불가" id="rep">
+  
+<script>
+let url = document.createElement('a');
+url.href = 'https://developer.mozilla.org:8080/en-US/search?q=URL#search-results-close-container';
+
+console.log("hash : " + url.hash);
+console.log("host : " + url.host);
+console.log("hostname : " + url.hostname);
+console.log("port : " + url.port);
+console.log("pathname : " + url.pathname);
+console.log("protocol : " + url.protocol);
+console.log("search : " + url.search);
+</script>
+
+</body>
+</html>

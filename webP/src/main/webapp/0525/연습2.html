@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.layout {
+  box-sizing: border-box;
+  padding: 4px;
+}
+header {
+  background-color: violet; 
+  height: 80px;
+}
+nav {
+  background-color: gold;
+  width: calc(30%);
+  height: 300px;
+  float: left;
+}
+main {
+  background-color: yellow;
+  width: calc(70%);
+  height: 300px;
+  float: right;
+}
+footer {
+  background-color: brown;
+  height: 50px;
+  clear: both;
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  position: relative;
+  top: -7px;
+}
+span {
+  color: white;
+  position: relative;
+  top: 10px;
+}
+.layout_nav {
+  margin: 0 20%;
+}
+.layout_main {
+  margin: 0 5%;
+}
+img {
+  width: 80px;
+}
+</style>
+</head>
+<body>
+  <header class="layout">
+    <h1>My Blog Page</h1>
+  </header>
+  <nav class="layout">
+	<div class="layout_nav">
+	  <h2>Links</h2>
+	  <ul>
+	    <li><a href="#">W3C</a></li>
+	    <li><a href="#">MOZILLA</a></li>
+	    
+	    <li><a href="#">HTML Dogs</a></li>
+	  </ul>
+	  <div class="layout_nav">
+	    <img src="../images/img/짱구.PNG" alt="logo"> <br>
+	   짱구
+	  </div>
+	</div>
+  </nav>
+  <main class="layout">
+    <div class="layout_main">
+      <h3>Semantic Tags</h3>
+      <p>시맨틱요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다</p>
+      <h3>div와 span</h3>
+      <p>div는 "divide"의 약자로서 ...............................<br>span요소는 인라인 요소로서 ................</p>
+    </div>
+  </main>
+  <footer class="layout">
+    <span>Copyright(c) 2022 DDIT</span>
+  </footer>
+</body>
+</html>

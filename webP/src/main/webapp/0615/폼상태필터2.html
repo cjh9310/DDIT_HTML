@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h4>선택한 checkbox값 전송</h4>
+  <form>
+    취미 : 
+    <input type="checkbox" name="hobby" value="여행">여행
+    <input type="checkbox" name="hobby" value="바둑">바둑
+    <input type="checkbox" name="hobby" value="독서">독서
+    <input type="checkbox" name="hobby" value="낚시">낚시
+    <br><br>
+    <input type="button" value="전송">
+    <div id="d1"></div>
+  </form>
+  
+  <h4>선택한 option값</h4>
+  <div>
+    <form action="test.jsp">
+      <select name="flower" multiple="multiple" size="5">
+        <option>개나리</option>
+        <option>진달래</option>
+        <option>민들레</option>
+        <option>목련</option>
+        <option>철쭉</option>
+      </select>
+      <input type="submit">
+    </form>
+    <div id="d2"></div>
+  </div>
+<script>
+//상태필터 - :selected
+$('select').on('change',function(){
+  let opt = "";
+  $('option:selected').each(function(){
+	  opt += $(this).val();
+  });	
+  $('#d2').html(opt);
+});
+
+//상태필터 - :checked
+$('input:button').on('click',function(){
+  //선택자 또는 객체가 갖는 갯수만큼 반복해 데이터 반환하는 each()
+  // :checkbox >> 입력양식선택자 :checked >> 상태필터
+  let hobby = "";
+  $(':checkbox:checked').each(function(){
+	hobby += $(this).val(); // javascript value
+  });
+ 
+  //null check
+  if(hobby == "") return false;
+  
+  $('#d1').html(hobby);
+  
+  //서버페이지로 값 전달하기
+  $('form').eq(0).attr('action','test.jsp')
+  	 		.attr('method','post').submit();
+  
+});
+</script>
+</body>
+</html>
+
+
+
+

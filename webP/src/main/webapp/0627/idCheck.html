@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script src="../js/jquery-3.6.0.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <div class="container">
+  <h2>회원가입</h2>
+  <form class="form-horizontal" method="post" onsubmit="return valid();">
+    
+    <div class="form-group">
+      <label for="id" class="control-label col-sm-2">아이디</label>
+      <span class="sp"></span>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="id" placeholder="Enter id" name="mem_id"
+         required pattern="[a-zA-Z][a-zA-Z0-9]{3,7}">
+      </div>
+<!--       <button type="button" class="btn btn-sm btn-success" id="idChk">중복검사</button> -->
+      <span id="rst"></span>
+    </div>
+    
+    <div class="form-group">
+      <label for="name" class="control-label col-sm-2">이름</label>
+      <span class="sp"></span>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="name" name="mem_name"
+        required pattern="[가-힣]{2,5}">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="bir" class="control-label col-sm-2">생년월일</label>
+      <div class="col-sm-3">
+        <input type="date" class="form-control" id="bir" name="mem_bir">
+        <span class="sp"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="pass" class="control-label col-sm-2">비밀번호</label>
+      <div class="col-sm-3">
+        <!-- 영문 소/대문자, 숫자, 특수문자가 반드시 1개 이상 -->
+        <input type="text" class="form-control" id="pass" name="mem_pass"
+        required pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()_+]).{8,}">
+      </div>
+      <span class="sp"></span>
+    </div>
+    
+    <div class="form-group">
+      <label for="hp" class="control-label col-sm-2">휴대전화</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="hp" name="mem_hp" 
+         placeholder="010-0000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}">
+      </div>
+      <span class="sp"></span>
+    </div>
+    
+    <div class="form-group">
+      <label for="mail" class="control-label col-sm-2">이메일</label>
+      <div class="col-sm-3">
+        <input type="email" class="form-control" id="mail" name="mem_mail"
+        	pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-z]+){1,2}">
+        	<!-- teSt09@go0gle.co.kr -->
+      </div>
+      <span class="sp"></span>
+    </div>
+    
+    <div class="form-group">
+      <label for="zip" class="control-label col-sm-2">우편번호</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="zip" name="mem_zip">
+      </div>
+      <button type="button" id="btn" class="btn btn-info"
+      	>우편검색</button>
+<!--       	data-toggle="modal" data-target="#myModal">우편검색</button> -->
+    </div>
+    
+    <div class="form-group">
+      <label for="add1" class="control-label col-sm-2">주소</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="add1" name="mem_add1">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="add2" class="control-label col-sm-2">상세주소</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="add2" name="mem_add2">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="submit" class="btn btn-primary"> 전송</button>
+        <span id="joinspan"></span>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">우편번호 찾기</h4>
+        </div>
+        <div class="modal-body">
+          <p>찾는 동을 입력하세요</p>
+          <input id="dong" class="form-control">
+          <input type="button" id="btnDong" value="검색" class="btn btn-success">
+          <div id="result"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modal end -->
+  </div>
+  
+<script>
+//id중복검사
+// $('#idChk').on('click',function(){});
+  $('#id').on('keyup',function(){
+    $.ajax({
+	  url : 'idCheck.jsp',
+// 	  type : 'get',
+	  data : { 'id' : $('#id').val() },
+	  success:function(data){
+		if(data.code == "ok"){
+		  $('#rst').html(data.msg).css('color','green');
+		}else{
+		  $('#rst').html(data.msg).css('color','red');
+		}
+	  },
+	  error:function(xhr){
+		  alert(xhr.status);
+	  },
+	  dataType: 'json'
+  });
+});
+//modal띄우기 1 - 속성(data-toggle, data-target) 사용하기
+
+//modal띄우기2 - modal() 사용
+$('#btn').on('click',function(){
+//   $('#myModal').modal({backdrop: 'static'});	//검은배경 유지
+//   $('#myModal').modal({backdrop: true});		//default, 검은배경 닫힘
+//   $('#myModal').modal();						//default, 검은배경 닫힘
+  $('#myModal').modal({backdrop: false});		//투명배경 유지
+});  
+  
+//우편번호 찾기
+$('#btnDong').on('click',function(){
+  $.ajax({
+	  'url' : 'dongSearch.jsp',
+	  data : {'dong' : $('#dong').val()},
+	  success:function(aaa){
+		let code = `<table border='1' class='table table-hover'>`;
+		code += `<tr><td>우편번호</td><td>주소</td><td>번지</td></tr>`;
+		
+		$.each(aaa, function(i){
+		  code += `<tr class='ziptr'><td>${aaa[i].code}</td>`;
+		  code += `<td>${this.addr}</td>`;
+		  code += `<td>${aaa[i].bunji}</td></tr>`;
+		});
+		code += `</table>`;
+		$('#result').html(code);
+	  },
+	  error:function(xhr){
+		  alert(xhr.status);
+	  },
+	  dataType : 'json'
+  });
+});
+  
+//delegate방식으로 동적요소 선택 이벤트 부여
+//$(parentSel).on('event','childSel',fn)
+$('#result').on('click','.ziptr',function(){
+  let zipCd = $('td:eq(0)',this).text();
+  let addr = $('td:eq(1)',this).text();
+  
+  //console.log(zipCd, addr);
+  
+  $('#zip').val(zipCd);
+  $('#add1').val(addr);
+  
+  //영역 초기화
+  $('#dong').val("");
+  $('#result').empty();
+  
+  //모달창 숨기기
+  $('#myModal').modal('hide');
+});
+  
+function valid(){
+	
+  event.preventDefault(); //submit을 막고 페이지 리로드를 방지..
+	
+  /* 
+  serialize() - jquery에서 제공하는 메소드
+  form태그 내부 값을 key=value 로 변경해 쿼리스트링으로 만듦
+  key=value >> url-encoded표기법으로 form의 객체들을 텍스트화하여 결과를 리턴
+  
+  form의 value를 한번에 전송 가능한 데이터로 만들어주는데,
+  이를 위해서는 form의 name속성 값을 VO필드명으로 작성해야 함
+  */	
+//   let serialize = $('form').serialize();	//url-encoded형식
+  //mem_id=a123&mem_name=%ED%95%9C%EA%B8%80%EB%A7%8C&mem_bir=2022...
+
+  let serializeArray = $('form').serializeArray();	//object형식
+  // [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+  
+  //console.log(serializeArray);
+	
+}  
+  
+  
+  
+</script>  
+</body>
+</html>

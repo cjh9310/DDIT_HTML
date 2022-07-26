@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <input type="file" id="attachFile">
+  <button type="button" id="readFile">파일읽기</button> <br>
+  <textarea id="result" rows="5" cols="50"></textarea>
+</body>
+<script>
+document.querySelector('#readFile').addEventListener('click',function(){
+
+	if(!window.File || !window.FileReader){
+		alert("File API가 지원되지 않음");
+		return;
+	}
+	
+	let files = document.querySelector('#attachFile').files;
+	
+	if(!files.length){
+		alert("입력된 파일이 없음");
+		return;
+	}
+	
+	let file = files[0];
+	var rd = new FileReader();
+	rd.readAsText(file);
+	
+	rd.onload=function(){
+	  document.querySelector('#result').innerHTML = rd.result;
+	}
+	
+});
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+.bg {
+	background-Color : red;
+}
+</style>
+<script src= "../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<p>이벤트 사용 메소드 on() one() off() </p>
+	<button>off()</button>
+	
+	<!-- 
+		option arguments
+			- data : {key:value} 형태로 데이터를 작성한다
+				사용시 event객체를 매개변수로 받아
+				data속성의 key로 접근한다.
+				ex) e.data.key
+			- map : 여러 이벤트 적용시 활용
+				{event:fn, event:fn,...}
+	
+	 -->
+	
+	
+<script>
+$('p').on('mouseover',function(){
+	$(this).toggleClass('bg');
+});
+$('p').one('click',{msg: 'one'},function(e){ //{msg: 'one'} 안에 데이터 내용을 넣어준다.
+	alert(`한번${e.data.msg} 만 실행되는 메소드...`) //e.data.msg   e가 데이터로 넘어오고 msg로 실행
+});
+$('button').on('click',function(){
+	$('p').off('mouseover'); 
+	// 버튼을 누르면 이벤트 적용이 되지 않는다.
+});
+</script>
+</body>
+</html>

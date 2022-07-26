@@ -1,0 +1,10 @@
+/.metadata/
+/Servers/
+*.txt
+*.xml
+*.png
+/*/.settings
+*.MF
+*.class
+*.jpg
+/apache-tomcat-8.5.37/

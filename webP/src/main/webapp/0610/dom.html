@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+pre {
+	column-count :2;
+}
+ul{
+	border : 1px dashed orange;
+	margin : 0px 20px;
+}
+li{
+	border : 1px solid brown;
+	margin : -10px 0;
+}
+div{
+	border : double gold;
+}
+</style>
+</head>
+<body>
+<pre>
+&lt;ul id="myList">   <!-- 문자형태 그대로 출력하기 위해  &lt; -->
+	&lt;li id = "li1">Coffee&lt;/li>
+	&lt;li id = "li2">Tea&lt;/li> 
+	&lt;li id = "li3">333&lt;/li>
+&lt;/ul>
+	
+	<ul id="myList">
+		<li id = "li1">Coffee</li>
+		<li id = "li2">Tea</li>
+		<li id = "li3">333</li>
+	</ul>
+
+</pre>
+
+	Element 관련 속성<div></div>
+	<hr>
+	Node 관련 속성<div></div>
+
+<script>
+	let d1 = document.querySelector('div'); //출력 영역
+	
+	// parentElement 현재 노드의 부모 요소 반환
+	d1.innerHTML = document.querySelector('#li1').parentElement + "<br>";
+	d1.innerHTML += document.querySelector('#li1').parentElement.tagName + "<br><br>";
+	
+	//children 모든 자식 요소 반환
+	d1.innerHTML += document.querySelector('#myList').children + "<br>";
+	d1.innerHTML += document.querySelector('#myList').children[0] + "<br>";
+	d1.innerHTML += document.querySelector('#myList').children[0].tagName + "<br>";  // tagName 대신 nodeName 사용 가능
+	d1.innerHTML += document.querySelector('#myList').children[1].innerText + "<br><br>";
+	//위는 textContent 혹은 innerText 사용 // 위에서는 nodeValue를 사용할 수 없다.(null뜸)
+	
+	// first(last)ElementChild 첫번째(마지막)요소 반환
+	d1.innerHTML += document.querySelector('#myList').firstElementChild + "<br>";
+	d1.innerHTML += document.querySelector('#myList').firstElementChild.tagName + "<br>";
+	d1.innerHTML += document.querySelector('#myList').firstElementChild.innerText + "<br>";
+	d1.innerHTML += document.querySelector('#myList').lastElementChild.innerText + "<br><br>";
+	
+	// next(previous)ElementSibling 현재 노드의 다음(이전) 형제 요소 반환
+	d1.innerHTML += document.querySelector('#li2').nextElementSibling + "<br>";
+	d1.innerHTML += document.querySelector('#li2').nextElementSibling.textContent + "<br>";
+	d1.innerHTML += document.querySelector('#li2').previousElementSibling.textContent + "<br>";
+	
+	
+	
+	
+	
+	let d2 = document.getElementsByTagName('div')[1];   //출력 영역
+	
+	// parentNode         현재 노드의 부모 노드 반환
+	d2.innerHTML = document.querySelector('#li2').parentNode + "<br>";
+	d2.innerHTML += document.querySelector('#li2').parentNode.nodeName + "<br><br>"; //tagName 도 가능하다.
+	
+	//childNodes          모든 자식 요소를 배열로 반환
+	d2.innerHTML += document.querySelector('#myList').childNodes + "<br>";
+	d2.innerHTML += document.querySelector('#myList').childNodes[0].nodeName + "<br>";     // commentNode
+	d2.innerHTML += document.querySelector('#myList').childNodes[0].nodeValue + "<br>";    // q
+	d2.innerHTML += document.querySelector('#myList').childNodes[1] + "<br>";
+	d2.innerHTML += document.querySelector('#myList').childNodes[1].nodeName + "<br>";     // textNode(공백)
+	d2.innerHTML += document.querySelector('#myList').childNodes[1].nodeValue + "<br>";    // 공백 (LI하위 text노드 안 text)
+	
+	
+	//first(last)Chile    배열의 첫번째(마지막) 자식 노드 반환'
+	d2.innerHTML += document.querySelector('#myList').childNodes[3] + "<br>";     //LI      
+	d2.innerHTML += document.querySelector('#myList').childNodes[3].firstchild + "<br>";  // textNode
+	d2.innerHTML += document.querySelector('#myList').childNodes[3].firstchild.nodeName + "<br>";  // textNode
+	d2.innerHTML += document.querySelector('#myList').childNodes[3].firstChild.nodeValue + "<br><br>";  // coffee
+	
+	//next(previous)Sibling 현재 노드의 다음(이전) 형제 노드 반환
+	d2.innerHTML = document.querySelector('#li2').previousSibling + "<br>";
+	d2.innerHTML = document.querySelector('#li2').nextSibling + "<br>";
+	d2.innerHTML = document.querySelector('#li2').nextSibling.nodeName + "<br>";
+	d2.innerHTML = document.querySelector('#li2').nextSibling.nodeValue + "<br>";
+	
+	
+	
+	
+	
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

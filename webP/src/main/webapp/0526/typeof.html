@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outstyle.css">
+<script>
+	var a;
+	document.write("var a : " + typeof a + "<br>");
+	var a = 3;
+	document.write("var a=3" + typeof a + "<br>");
+	var a = "javascript";
+   	document.write("var a=js" + typeof a);
+	  document.write("var a=js : " + typeof a + "<br>");
+	  var a = true;
+	  document.write("var a=true : " + typeof a + "<br>");
+	  var a = ["html","css","javascript"];
+	  document.write("var a=[arr] : " + typeof a + "<br>");
+	  var a = function a(){};
+	  document.write("var a=fn(){} : " + typeof a + "<br>");
+	  function a(){};
+	  document.write("fn a(){} : " + typeof a + "<br>");
+</script>
+</head>
+<body>
+<pre>
+	typeof : 변수의 데이터 타입을 반환하는 연산자
+	primitive data type(원시타입)
+		- String : 데이터의 타입이 문자열
+		- number : 데이터의 타입의 숫자
+		- boolean : 데이터의 타입이 true, false
+		- null : 지정되지 않은 빈 상태
+		- undefined : 변수가 정의되지 않았거나 값이 없는 상태
+		- object (또는 function) : 데이터 타입이 함수, 배열 등의 객체
+ 	------------------------------------------------------------
+ 		- symbol : ES6에서 추가된 7번째 원시타입
+ 		       ㄴ  충돌 위험이 없는 객체의 유일한 프로퍼티 키를 만들기 위해 사용
+ 		       ㄴ  유일성이 보장되는 자료형으로 다른 값과 중복되지 않도록 한다.
+ 
+ 
+ 
+ 
+ 
+ 
+</pre>
+</body>
+</html>

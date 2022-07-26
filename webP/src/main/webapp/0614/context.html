@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src= "../js/jquery-3.6.0.min.js"></script>
+<script>
+// 	$(document).ready(function(){});
+	$(function(){
+// 		$(선택자,컨텍스트)
+		$('input',$('#form2')).css('color','red')
+							  .css('fontSize','1.4em')
+							  .css('borderColor','gold');
+	});
+</script>
+</head>
+<body>
+  <form id="form1">
+    <input>
+  </form>
+  <form id="form2">
+    <input>
+  </form>
+  <form id="form3">
+    <input>
+  </form>
+</body>
+</html>

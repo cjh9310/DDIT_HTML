@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h4>form을 이용한 데이터 전송</h4>
+  <form>
+    <input name="info">
+    <input type="button" value="확인">
+  </form>
+  
+  <h4>ajax를 이용한 데이터 전송</h4>
+  <button type="button">확인</button>
+  <div></div>
+
+<script>
+// 기존 방식으로 페이지의 전환 이후 데이터 표현
+$('input:button').on('click',function(){
+	$('form').attr('action','oldTest.jsp').submit();
+});
+
+// ajax통신을 이용해 기존 페이지에 정보 업데이트
+$('button:button').on('click',function(){
+	// 서버에 요청하기위해 필요한 객체 생성
+	// XMLHttpRequest객체 : 서버와 상호작용하기 위해 사용
+	//                     새로고침 없이 데이터를 받아오며
+	//                     주로 ajax에 사용된다.
+	let request = new XMLHttpRequest();
+	
+	// 요청 정보 설정 - open(method, url, async)
+	request.open('get','newTest.jsp',true)
+	// 요청 정보 서버로 전송(get방식)
+	request.send();
+	
+	// 서버로부터 응답데이터 받기
+	/*
+		onreadystatechange : readyState값이 변할때마다
+							 자동으로 호출되는 함수 설정
+							 (서버로부터 총 5번 호출됨)
+		>> 위 이벤트속성을 사용해 서버에 요청한 데이터의 존재 및
+		   응답 도착의 순간을 특정한다.
+		   
+		- readyState : send()시 서버에서 요청페이지 상태변화를
+			   		   코드로 전송해 줌
+		>> 0 : send전 준비 1: 로딩중 2: 로딩완료 3:서버처리중 4:서버처리끝
+		
+		- status : 결과에 대한 상태 코드
+		  >> 200 : 결과성공 403 : 요청오류 404 : 요청페이지없음 500 : 서버에러
+	
+	*/
+	request.onreadystatechange = function(){
+// 		console.log(this.readyState);
+// 		console.log(this.status);
+		if(this.readyState == 4 && this.status == 200){
+			// 결과를 출력할 수 있음
+			// responseText : 서버로부터 반환된 응답 정보 (문자열)
+			// console.log(this.responseText); //json Object data...
+			
+			// JSON형식의 데이터만 파싱 가능
+			let a = JSON.parse(this.responseText); // json -> obj 변환
+			
+			console.log(a);     // 배열형식의 데이터
+/*			
+			// key로 접근하여 데이터 표현...
+			let result = `이름 : ${a.name} <br>`;
+				result += `주소 : ${a.addr} <br>`;
+				result += `전화 : ${a.tel} <br>`;
+
+			each() - object     $.each(obj,fn)
+			each() - selector   $(selector).each(fn)
+			
+			let result = "<ul>";
+			$.each(a,function(){      // 방법2 방법3을 사용할려면 function() 괄호안에 i 혹은 v를 적용해야 한다
+				                      // 단, 방법 1을 사용하면 괄호안에는 공백.
+				result += "<li>" + this + "</li>";  // 방법1
+				result += "<li>" + a[i] + "</li>";  // 방법2
+				result += "<li>" + v + "</li>";  // 방법3
+			});
+			result += "</ul>";
+*/
+
+			let result = "<ul>";
+			// json obj array
+			$.each(a,function(){
+				result += "<li>" + this.name + "</li>";
+				result += "<li>" + this.addr + "</li>";
+				result += "<li>" + this.tel + "</li>";
+		  });
+		  result += "</ul>";
+		  
+		  
+			$('div').html(result);    // 전체 실행기
+		}
+	};
+	
+	
+	
+	
+	
+	
+	
+});
+
+
+
+
+</script>
+</body>
+</html>

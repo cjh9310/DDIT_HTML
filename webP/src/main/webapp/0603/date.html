@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel = "Stylesheet" href = "../css/outStyle.css">
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<script>
+		let now1 = new Date();
+		let now2 = new Date(2000);        // milliseconds 1초 = 1000
+		let now3 = new Date("2000.05.05");
+		let now4 = new Date(2000, 05-1, 05, 14, 23, 25);    // month는 0부터 시작
+		document.querySelector('div').innerHTML = now1 + "<br>"
+												+`${now2} <br>`
+												+`${now3} <br>`
+												+`${now4} `;
+											
+		document.getElementsByTagName('div')[1].innerHTML
+											="toLocaleString : "+ now1.toLocaleString() + "<br>"
+											+"toLocaleDateString : "+  now1.toLocaleDateString() + "<br>"
+											+"toLocaleTimeString : "+ now1.toLocaleTimeString();
+	</script>
+</body>
+</html>

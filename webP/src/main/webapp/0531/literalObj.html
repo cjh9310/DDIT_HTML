@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<pre>
+	리터럴 객체 생성 vs 생성자 객체 생성
+	
+	선호도가 더 높은 리터럴 객체 생성 방식
+	이유
+	1. 코딩이 편하고 가독성 좋음
+	2. 속도 빠름 (다수의 객체 생성 후 비교시 차이가 남)
+	3. 자바스크립트 오버라이딩 방지(생성자 방식으로 생성시 오버라이딩 가능성)
+</pre>
+
+<script>
+//사각형 객체 생성후 속성과 메소드로 결과 값을 변형
+let rect = {
+		garo : 10,
+		sero : 12,
+		getArea : function(){	//면적구하기
+			let area = this.garo * this.sero;
+			return area;
+		},	
+		getCircum : function(){	//둘레구하기
+			return (this.garo + this.sero) * 2;
+		}
+};
+
+let cc = rect.getCircum();
+let result = `가로 : ${rect.garo} <br>`;
+	result += `세로 : ${rect['sero']} <br>`;
+	result += `면적 : ${rect.getArea()} <br>`;
+	result += `둘레 : ${cc}`;
+
+//모든 문서(콘텐츠)를 준비시키고 실행문 실행
+document.addEventListener('DOMContentLoaded',function(){
+// window.addEventListener('load',function(){
+// window.onload= function(){	
+	document.getElementsByTagName('div')[0].innerHTML = result;
+// 	document.querySelector('div').innerHTML = result;
+// }
+});
+</script>
+
+<div></div>
+
+</body>
+</html>

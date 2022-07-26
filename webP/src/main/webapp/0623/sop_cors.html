@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	SOP와 CORS
+
+	SOP (Same-Origin Policy, 동일 출처 원칙)
+	: 자바스크립트 엔진 표준 스펙의 보안 규칙
+	>> 자바스크립트를 통해 다른 웹 페이지 접근시
+	같은 출처(protocol,port,host)에 대한 페이지만 접근 가능 
+
+	위 정책으로 인해 외부소스를 가져다 사용하는데 어려움 발생
+	이를 해결하기 위해 CORS정책이 추가되었음
+	
+	CORS (Cross-Origin Resource Sharing, 교차출처 리소스 공유)
+	>> 외부 요청을 허용할 경우만 사용 가능한 방식
+	
+	방법1
+		플러그인 설치() 
+		>> http response header에 Access-Control-Allow-Origin: * 자동추가 	
+		>> 개발과정에서 테스트 용도로 사용 / 추후 다른 방안으로 해결해야 함
+	
+	방법2 
+		JSONP 방식으로 호출하기
+		>> 서버쪽 작업이 불가한 경우
+		   CSS, JAVASCRIPT 리소스 파일들을 임베딩할 때 
+		   SOP정책에 영향을 받지 않는 방식을 사용한 일종의 편법
+		>> 외부에서 읽어온 js파일을 json으로 바꿔주는 방식(get방식만 가능)
+	방법3 ★
+		Server-side 처리
+		>> 외부도메인 요청을 처리하기 위해 인증된 서버로 데이터를 받아
+		   활용하는 방식(=서버 우회)
+</pre>
+</body>
+</html>

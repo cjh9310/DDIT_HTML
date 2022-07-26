@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+  border: solid;
+  margin : 2px;
+  box-sizing: border-box;
+}
+div:nth-of-type(1) {
+	background-color : yellow;
+	height : 60px;
+	
+}
+div:nth-of-type(2) {
+	background-color : red;
+	opacity : .3;         /* 투명 */
+	width : calc(30% - 4px);
+	height : 400px;
+	float : left;
+}
+div:nth-of-type(3) {
+	background-color : green;
+	width : calc(70% - 4px); /* 마이너스 양쪽에 공백 필수*/
+	height : 400px;
+	float : right;
+}
+div:nth-of-type(4) {
+	background-color : purple;
+	height : 30px;
+	clear : both;   /* float효과를 끊음*/
+	position : relative;
+	top : 2px;
+}
+
+</style>
+</head>
+<body>
+  <div>header</div>
+  <div>nav</div>
+  <div>content</div>
+  <div>footer</div>
+</body>
+</html>

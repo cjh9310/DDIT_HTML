@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+//Type=‘button’인 input요소, 배경색 지정 - yellow
+$('input[type="button"]').css('backgroundColor','yellow');
+
+//href=‘mailto’로 시작하는 a요소 배경색 지정 - yellow
+$('a[href^=mailto]').css('color','gold');
+
+//href가 ‘power2c’를 포함하는 모든 a요소 - 밑줄 없음
+$('a[href*=power2c]').css('textDecoration','none');
+
+//id=‘img1’를 제외한 모든 img요소 테두리 색 지정 - blue
+$('img[id!=img1]').css('border','solid');
+
+//src=‘png’인 img요소 테두리 색 지정 - green
+$('img[src$="PNG"]').css('border','solid green');
+
+//alt 속성을 갖는 img요소 테두리 두께 지정 - 5px
+$('img[alt]').css('borderWidth','5px')
+			.css('borderStyle','solid');
+
+//title=‘named’ 단어를 포함하는 img요소 테두리 - 두 줄 테두리
+$('img[title*=named]').css('borderStyle','double');
+
+//id=‘little’ 또는 ‘liit-’로 시작하는 img요소 테두리 - 점선 테두리
+$('img[id|=little]').css('borderStyle','dotted');
+
+//type=‘text’인 input요소 테두리 변경
+$('input[type=text]').css('borderStyle','outset');
+});
+</script>
+</head>
+<body>
+  <div class="box">
+    <a href="http://www.ddit.or.kr">(재)대덕 인재 개발원</a>
+    <br><br>
+    <!-- power2c를 공백으로 분리하여 ~= 예제 사용 -->
+    <a href="mailto:power2c@ddit.or.kr">빠워에게 메일보내</a>  
+    <br><br>
+    
+    <div>
+    <label>Some images:</label>
+    </div>
+      <img src="../images/cat.jpg" id="img1" alt="Hibiscus" width="50px" height="50px">
+      <img src="../images/dog.jpg" id="little" title="little Bear" width="50px" height="50px">
+      <img src="../images/jjang.jpg" id="little-bear" alt="Verbena" width="50px" height="50px">
+      <img src="../images/cat.jpg" id="img4" title="named Cozmo" width="50px" height="50px">
+  <!--     <img src="" title=" named Cozmo">  공백으로 구분된 값만 찾는 구분자(~=) 예제에 활용 -->
+      <img src="../images/ddit.PNG" id="img5" title="namedimg5" alt="Lily" width="50px" height="50px">
+      <img src="../images/dog.jpg" id="img6" title="coffeePot" width="50px" height="50px">
+      <img src="../images/jjang.jpg" width="100px" height="100px">
+     
+    <div id="someDiv">이곳은 ID속성이 someDiv인 &lt;div&gt;태그 입니다. </div>
+    <form>
+      <div>
+   	  <label>Text:</label>
+   	  <input type="text" id="aTextField" name="someTextField"/>
+   	</div>
+  	 
+   	<br>
+  	 
+   	<button type="submit" id="submitButton">Submit</button>
+      <input type="button" value="클릭~~">
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+var v_div;
+window.onload=function(){
+  v_div = document.getElementById('d1');
+}
+function proc1 (){
+	//get
+	alert(v_div.innerHTML);
+	//set
+	document.getElementById('result')
+		.innerHTML = "<span style='color:orange'>innerHTML</span>";
+}
+function proc2(){
+	//get
+	alert(v_div.innerText);
+	//set
+	document.getElementById('result')
+		.innerText = "<span style='color:orange'>innerText</span>";
+}
+function proc3(){
+	//get
+	alert(v_div.textContent);
+	//set
+	document.getElementById('result')
+		.textContent = "<span style='color:orange'>innerText</span>";
+}
+function proc4(){
+	//get
+	var v_ele = document.getElementsByTagName('input')[3];
+	alert(v_ele.value);
+	//set
+	v_ele.value = "changeBtn";
+}
+</script>
+</head>
+<body>
+  <div id="d1">
+   안녕?                        만나서 반갑다ㅎ
+   <span style="display: none;">숨겨진 텍스트</span>
+  </div>
+  
+  <input type="button" value="innerHTML" onclick="proc1()">
+  <input type="button" value="innerText" onclick="proc2()">
+  <input type="button" value="textContent" onclick="proc3()">
+  <input type="button" value="value" onclick="proc4()">
+  
+  <div id="result"></div>
+
+<pre>
+	요소에 값을 읽어오거나 설정하는 키워드
+	
+	<h3>value</h3>	
+	  1. 입력양식 &lt;input>의 초기 값 명시에 사용
+	  2. 입력양식 type에 따라 용도가 변경
+		- button, reset, submit : 버튼 내 텍스트 정의
+		- text, password, hidden : 입력 필드 초기 값 정의
+		- checkbox, image, radio : 필드 선택시 서버로 제출되는 값 정의 
+	
+	<h3>innerHTML</h3>
+	  읽어오는 값에 태그를 포함한다 
+	  때문에 보안에 취약한 단점이 존재(대표적으로 XSS:Cross-site Scripting)
+	  
+	  HTML5에서는 innerHTML과 함께 삽입된 태그를 실행하지 않도록 지정했으며
+	  보안점검을 거치는 프로젝트의 경우 코드 거부 가능성이 있음
+	  
+	  특별한 경우를 제외하고 사용을 권장하지 않음
+	
+	<h3>innerText</h3>
+		element의 속성
+		사용자에게 보여지는 텍스트의 값을 읽어옴
+		연속되는 공백은 무시(=하나의 공백으로 처리)
+		원시 텍스트의 랜더링된 상태(=스타일 적용 후)를 보여줌
+		
+	<h3>textConent</h3>
+		node의 속성
+		해당 노드의 텍스트 값(=원시 텍스트)을 읽어옴
+		표현된 공백을 그대로 처리하며,
+		숨겨진 텍스트도 출력
+</pre>
+  
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <h4>버튼 클릭했을 때 이미지 출력</h4>
+  <div>
+    <ul>
+      <li>cat.jpg</li>
+      <li>ddit.PNG</li>
+      <li>jjang.jpg</li>
+      
+    </ul>
+    <input type="button" value="이미지생성" onclick="proc()">
+  </div>
+  
+  <h4>리스트 항목을 클릭했을 때 이미지 출력</h4>
+  <div>
+    <ul>
+      <li onclick="proc2(this)">cat.jpg</li>
+      <li onclick="proc2(this)">ddit.PNG</li>
+      <li onclick="proc2(this)">jjang.jpg</li>
+    </ul>
+  </div>
+  
+  <h4>이벤트 한번에 설정하기</h4>
+  <div>
+    <ul>
+      <li class="add">cat.jpg</li>
+      <li class="add" >ddit.PNG</li>
+      <li class="add">jjang.jpg</li>
+    </ul>
+  </div>
+<script>
+//document.querySelector('.add')
+// document.getElementsByClassName('add').addEvent...
+let addCls = document.getElementsByClassName('add');
+// addCls.addEventListener('click',function(){});	//이벤트 대상 못찾음
+
+//정확한 대상을 선택하여 이벤트 부여 - for문 사용
+//console.log(addCls.length);
+for(i=0; i<addCls.length; i++){
+	addCls[i].addEventListener('click',addImg);
+}
+function addImg(){
+//		alert(this.textContent); //this.firstChild.data
+	//위치로 새요소 붙여넣기
+	let v_src = this.firstChild.data;
+	let v_img = document.createElement('img');
+	v_img.src = '../images/' + v_src;
+	v_img.width = 30;
+	v_img.height = 30;
+	v_img.style.borderRadius = "20px";
+	this.appendChild(v_img);
+}
+
+
+
+function proc2(t){
+	//console.log("element접근 >> " + t.textContent);
+	//console.log("node접근 >> " + t.firstChild.data);
+	let v_src = t.textContent;
+	
+	//새요소 생성하고 
+	let v_img = document.createElement('img');
+	v_img.src = "../images/" + v_src;
+	v_img.width = 80;
+	v_img.height = 60;
+	v_img.style.borderRadius = "20px";
+	//선택항목(t로 받음) 안쪽에 붙을 수 있도록..appendChild..
+	//appendChild() : 선택한 대상의 안쪽 끝에 붙여넣음 
+	t.appendChild(v_img);	
+}
+function proc(){
+  	let list = document.querySelector('ul');
+	//list.querySelectorAll('li');
+  	let li = list.getElementsByTagName('li');
+  	//console.log(li.length);
+  	for(i=0; i<li.length; i++){
+  	  //console.log(li[i].firstChild.data);	//nodeValue, textContent
+  	  let v_src = li[i].firstChild.data;
+  	  
+  	  //새요소 생성- img
+  	  let v_img = document.createElement('img');
+  	  v_img.src = "../images/" + v_src;	//src속성 추가
+  	  v_img.width = 100;
+  	  v_img.style.height = "100px";
+  	  document.querySelector('div').appendChild(v_img);
+  	}
+}
+</script>
+</body>
+</html>

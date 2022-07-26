@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <h4>getTime() : 경과시간 구하기 (반환 값 milliseconds)</h4>
+  
+  <input type="button" value="살아온 날짜" onclick="proc1()">
+  <div></div>
+  
+  <hr>
+  
+  <input type="button" value="수료일자" onclick="proc2()">
+  <div></div>
+  
+  <hr>
+  
+  구입 날짜 : <input type="date" id="buyDate">
+  <button onclick="checkDate()">검사</button>
+
+<script>
+//살아온 날짜 구하기
+
+let now = new Date();
+
+function checkDate(){
+//   document.getElementById('buyDate').value;	
+  let buyDate = document.querySelector('#buyDate').value;	
+  console.log(buyDate);
+  
+  //buyDate null check ------------------
+  if(buyDate != null && buyDate !=""){
+// if(buyDate == null || buyDate == ""){alert("날짜를 선택하세요.")}
+  }else{
+	  let refund = new Date(buyDate);
+	  
+	  let rfd = refund.getTime();	//ms
+	  let today = now.getTime();	//ms
+	  
+	  //경과시간 구하기
+	  let time = today - rfd;		//ms
+	  let dd = time/1000/60/60/24;	//경과일
+	  
+	  //비교
+	  if(dd >= 7){	//7일 이상일때
+		alert("교환/환불 불가");
+	  }else{	//7일 이하
+		alert("교환/환불 가능");
+	  }
+	  
+  }
+  
+ 
+  
+}
+
+
+function proc1(){
+	let bir = new Date("2018.11.12");
+	
+	//태어난 일자로부터 경과시간 구하기
+	let today = now.getTime();		//ms
+	let birthday = bir.getTime();	//ms
+	//console.log(today - birthday);
+	
+	let time = today - birthday;	//ms
+	let sec = time/1000;			//seconds
+	let min = sec/60;				//min
+	let hh = min/60;				//hour
+	let dd = hh/24;					//date
+	let yy = dd/365;				//year
+	
+	let result = `생년월일 : ${bir.toLocaleDateString()} <br>`;
+	result += `오늘 날짜 : ${now.toLocaleDateString()} <br>`;
+	result += `태어난 지 ${yy.toFixed(2)}년 경과 <br>`;
+	result += `태어난 지 ${dd.toFixed(1)}일 경과 <br>`;
+	result += `태어난 지 ${hh.toFixed()}시 경과 <br>`;
+	result += `태어난 지 ${min.toFixed()}분 경과 <br>`;
+	result += `태어난 지 ${sec.toFixed()}초 경과`;
+	document.querySelector('div').innerHTML = result;
+}
+
+//남은 수료일 구하기
+function proc2(){
+	let complet = new Date("2022.11.28");
+	
+	// 	수료일 D-day구하기
+	let compday = complet.getTime();
+	let today = now.getTime();
+	
+	let time = compday - today;	//ms
+	let dd = time/1000/60/60/24;
+	
+	let result = `수료일 : ${complet.toLocaleDateString()} <br>`;
+	result += `오늘 날짜 : ${now.toLocaleDateString()} <br>`;
+	result += `수료일까지 D-${dd.toFixed()}일`;
+	document.getElementsByTagName('div')[1].innerHTML = result;	
+}
+
+//milliseconds - 100일후 날짜 구하기
+var currTime = new Date().getTime();
+var addTime = 100*24*60*60*1000;
+var resultDate = new Date(currTime + addTime);
+//alert(`오늘부터 100일후 : ${resultDate}`);
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

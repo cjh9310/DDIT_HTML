@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	이벤트 등록 형식 : bind
+	실행(로딩) 이전에 이미 document에 생성되어 있는 요소에만
+	이벤트 핸들러가 동작한다
+	
+	* 동적으로 생성된 요소는 이벤트 핸들러가 동작하지 않음
+</pre>
+  <div class="box">
+    <input type='button' class="btn" value="버튼">
+    <input type='button' id="clear" value="해제">
+  </div>
+<script>
+//	bind방식 : $(selector).bind('event',fn)
+$('.btn').on('click',function(){
+	//새버튼 생성 - 동적요소
+	$('<input>',{
+		'type' : 'button',
+		'class' : 'btn',
+		'value' : '새버튼'
+	}).appendTo('.box');
+});
+$("#clear").on('click',function(){
+	$('.btn').off('click');
+});
+
+
+</script>  
+</body>
+</html>
+
+
+
+

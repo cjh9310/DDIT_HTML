@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <input type="file" id="attachFile">
+  <button type="button" id="readFile">파일읽기</button> <br>
+  <textarea id="result" rows="5" cols="50"></textarea>
+</body>
+<script>
+document.querySelector('#readFile').addEventListener('click',function(){
+	let files = document.querySelector('#attachFile').files;
+	let output = "";
+	
+	for(let i=0; i<files.length; i++){
+		let file = files[i];
+		output += file.name + "\n";
+		output += file.type + "\n";
+		output += file.size + "bytes\n";
+		output += file.lastModifiedDate + "\n";
+	}
+	document.querySelector('#result').innerHTML = output;
+});
+</script>
+</html>

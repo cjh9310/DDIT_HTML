@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 1px solid;
+  border-radius: 20px;
+  height: 20px;
+  padding: 40px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<script>
+window.onload=function(){
+  //선택자에 이벤트 부여..
+  let strBtn = document.querySelector('#str');
+  strBtn.addEventListener('click', proxyCall); //대리자를 이용해 호출함...
+  
+  
+  document.querySelector('#end').addEventListener('click',callEnd);
+}
+
+let time;
+function randomColor(){
+	let color = [];
+	
+	for(i=0; i<3; i++){
+	  color[i] = parseInt(Math.random()*256);
+	}
+	document.querySelector('div').style.backgroundColor
+				= `rgb(${color[0]},${color[1]},${color[2]})`;
+	time = setTimeout(randomColor, 1000);  //재귀호출   => 자동 색상 변경
+}
+
+// 대리자 함수 생성 
+let startChecker = false;
+function proxyCall(){ //proxy patten
+	if(!startChecker){   //startChecker가 true일때         ! => not
+		randomColor();   // randomColor() 호출
+	}
+	startChecker = true;
+}
+function callEnd(){
+	// clearTimeout(setTimeout개체) 실행...
+	clearTimeout(time);
+	startChecker = false;
+}
+
+
+
+</script>
+  <input type="button" value="시작" id="str">
+  <input type="button" value="중지" id="end">
+  <div></div>
+</body>
+</html>

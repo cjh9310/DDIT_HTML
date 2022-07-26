@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+[type = "image"] {
+	width : 30px;
+}
+</style>
+<script>
+function send(){
+	//alert("까꿍");
+	//데이터 전송을 위한 코드 작성
+	
+	var frm =document.getElementsByTagName("form")[2];  
+	frm.submit();
+}
+
+</script>
+</head>
+<body>
+	<!--  get방식으로 데이터 전송 -->
+	<form action="test.jsp" method="get">  <!-- test.jsp위치로 보내겠다. -->
+	id : <input name = "userId"> <br> 
+	pw : <input type="password" name="userPw"> <br>
+	<input type ="submit" value="전송하기">
+<!-- 	submit 다른 곳으로 제출 할 수 있는/ 기본적으로 '제출'이 나오지만 이름을 바꾸고 싶으면 value-->
+	</form>
+	
+	<hr>
+	<!--  post방식으로 데이터 전송 -->
+	<form action="test.jsp" method="post">  <!-- post 주소에 기록이 안남음 -->
+	id : <input name = "userId"> <br> 
+	pw : <input type="password" name="userPw"> <br>
+	<input type ="submit" value="전송하기">
+	</form>
+	
+	
+		<!-- input type="button"으로 변경 후 전송기능 부여하기 -->
+	<form action="test.jsp" method="post">  <!-- post 주소에 기록이 안남음 -->
+	id : <input name = "userId"> <br> 
+	pw : <input type="password" name="userPw"> <br>
+	<input type ="button" value = "btn" onclick="send()">
+	</form>
+	
+	<!-- input type="image"으로 변경 후 전송하기 -->
+	<form action="test.jsp" method="post">  <!-- post 주소에 기록이 안남음 -->
+	id : <input name = "userId"> <br> 
+	pw : <input type="password" name="userPw"> <br>
+	<input type ="image" src="../images/img/짱구.jpg" >
+	<input type = "reset" value= "reset">
+	</form>
+</body>
+</html>

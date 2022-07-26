@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<pre>
+		DOM (Document Object Model, 문서 객체 모델)
+		- HTML페이지(=웹문서)를 인식할 수 있도록 구성된 문서 객체 모델
+		- Document와 관련된 객체 집합으로 
+			프로그래밍 언어가 DOM구조에 접근할 수 있는 방법 제공
+			>> 문서의 구조, 스타일, 내용 등의 변경을 도움
+			
+		- 자바스크립트를 통해 동적 변경이 가능하고 접근 방식은
+			getElement.. , querySelect ... 을 사용
+
+
+		DOM Tree 구조 - 관련 NODE
+	
+	- Document(9)  //자주 씀
+	  ㄴDocumentType(10)				<mark>&lt;!DOCTYPE HTML></mark>
+	  ㄴElement(1)  //자주 씀			&lt;<mark>textarea</mark>>, &lt;<mark>p</mark>>, &lt;<mark>font</mark>>
+	    ㄴAttribute(2)  //자주 씀			&lt;textarea <mark>rows</mark>="30" <mark>cols</mark>="40">
+	    ㄴEntity(6)					&<mark>lt</mark>;text&<mark>gt</mark>;
+	    ㄴEntityReference(5)			<mark>&</mark>lt<mark>;</mark>text<mark>&</mark>gt<mark>;</mark>
+	    ㄴText(3)  //자주 씀			&lt;p><mark>text</mark>&lt;/p> 		==> 공백 데이터 포함
+	  ㄴComment(8)					<mark>&lt;!-- 주석 --></mark>
+	  ㄴDCATASection(4)				<mark>&lt;![CDATA[]]></mark>		==> 특수문자,비교연산자등을 문자열로 인식하도록 처리
+	  ㄴNotation(7)					&lt;font color="<mark>#ffff00</mark>" size="<mark>10px</mark>"> ==> #ffff00, 10px
+</pre>
+</body>
+</html>

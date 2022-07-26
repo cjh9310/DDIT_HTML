@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<script>
+  $.ajax({
+	  //인코딩 key
+	  url : 'proxy.jsp?http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?',
+	  //type : 'get',
+	  data : {
+		  //디코딩 key 
+		  'serviceKey':'fZyZd8Aa3ciGxwCiU6sVUlIwwJbDvoD6YZg2/+9AtWIql/9bRTtdX/X5kegJaKMmNbaGJazfNS3k2nHtzEISZA==',
+		  'numOfRows' : '5',
+		  'PageNo' : '1'
+	  },
+	  success:function(data){
+		  //console.log(data);
+		  let result = "";
+		  $.each(data.msgBody, function(){
+			result += this.title + "<br>";
+			$('body').html(result);
+		  });
+	  },
+	  error:function(xhr){
+		  alert(xhr.status);
+	  },
+	  dataType: 'json'
+  });
+
+</script>
+</body>
+</html>

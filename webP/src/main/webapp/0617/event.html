@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div{
+	width : 40%;
+	height: 200px;
+	background : green;
+	padding : 40px;  /* 안쪽 여백 */
+}
+
+</style>
+<script src= "../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+	<div></div>
+<script>
+$('div').on({
+	mouseenter : function(){                       
+		$(this).css('background','lightgray');
+	},
+	mouseleave : function(){                          
+		$(this).css('background','lightblue');
+	},
+	dblclick : function(){
+		$(this).css('background','yellow');
+	},
+});
+
+
+
+ 							//click 1
+// $('div').on('click', function(){  //매개변수를 지정하지 않았을 때 event키워드 사용
+// 	let result = `event의 target : ${event.target}`;
+// 		result += `event의 type : ${event.type}`;
+// 		result += `pageX : ${event.pageX} <br>`;
+// 		result += `pageY : ${event.pageY} <br>`;
+// 		result += `screenX : ${event.screenX} <br>`;
+// 		result += `screenY : ${event.screenY} <br>`;
+// 		result += `event의 button : ${event.type}`;
+// 	$(this).html(result);
+// });
+
+
+ 							//click 2
+// $('div').on('click', function(e){
+// 	let result = `event의 target : ${e.target}`;
+// 		result += `event의 type : ${e.type}`;
+
+// 	$(this).html(result);
+// });
+
+
+ 							//mousedown
+$('div').on('mousedown', function(){  //매개변수를 지정하지 않았을 때 event키워드 사용
+	let result = `event의 target : ${event.target}`;
+		result += `event의 type : ${event.type}`;
+		result += `pageX : ${event.pageX} <br>`;
+		result += `pageY : ${event.pageY} <br>`;
+		result += `screenX : ${event.screenX} <br>`;
+		result += `screenY : ${event.screenY} <br>`;
+		//mousedown 이벤트 : 0-left,1-wheel,2-right 정보 얻음
+		result += `event의 button : ${event.type}`;
+	$(this).html(result);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+#d1 {
+  border: solid orange;
+  margin: 10px;
+}
+#d2 {
+  border: solid green;
+  margin: 10px;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	load() : 서버로부터 응답받은 데이터를 지정된 요소에 배치
+  		  간소화된 비동기 호출 메소드로, 코드를 간결하게 함
+  		  same-origin-policy적용으로 다른 url주소나 sub domain에서
+  		  정보를 불러올 수 없다
+</pre>
+  <button>버튼</button>
+  <div id="d1"></div>
+  <div id="d2"></div>
+<script>
+let a = "apple";
+let b = "pie";
+
+$('button').on('click',function(){
+	//$(selector).load(url, data, callback_fn)
+	$('#d1').load('http://naver.com', 
+// 	$('#d1').load('../0617/imgRotate.jsp', 
+			{"str1" : a, "str2" : b},
+			//1:response - 성공시 결과데이터 
+			//2:status - 호출상태
+			//3:xhr - 객체의 속성 사용가능 
+			function(resp,stts,xhr){
+				$('#d2').html(resp);
+// 				alert("호출상태 : " + stts);
+				alert("xhr속성으로 상태확인 : " + xhr.statusText);
+			});
+});
+
+
+</script>
+</body>
+</html>

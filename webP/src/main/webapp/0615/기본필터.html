@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<script>
+$(function(){
+  //first, last, eq, lt, gt는 메소드로 대체
+  
+//   $('li:first, li:last').css('background','purple');  
+  $('li').first() 
+  			.css('background','purple');  
+  
+  $('li:not(.not)').css('color','pink');
+  
+//   $('li:even').css('background','gray');
+//   $('li:odd').css('background','lightgray');
+  
+//   $('li:eq(2)').css('color','red');
+  $('li').eq(2).css('color','green');
+  
+//   $('li:lt(3)').css('fontSize','1.5em');
+//   $('li:gt(2)').css('fontStyle','italic');
+  // :lt, :gt => slice(start,end-1) end는 생략가능
+  $('li').slice(2,4).css('fontSize','1.5em');
+  
+  
+});
+</script>
+<pre>
+  기본필터 
+  	:first,:last,:eq(idx),:gt(idx),:lt(idx),:even,:odd 
+</pre>
+  <div id="box1">
+    <ul>
+      <li>one</li>
+      <li class="not">two</li>
+      <li>three</li>
+      <li class="not">four</li>
+      <li>five</li>
+    </ul>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+

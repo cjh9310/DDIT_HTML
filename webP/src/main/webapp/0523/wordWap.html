@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outstyle.css">
+<style>
+div {
+	border : 3px solid red;
+	width:50%;
+/* 	word-wrap: break-word; 차이점을 비교해 볼 것*/
+	word-wrap: break-word;
+	height:200px;
+	overflow:scroll; /* 높이속성(height)이 존재할 경우만 사용가능 */
+}
+
+</style>
+</head>
+<body>
+<pre>
+	띄어씌기 되지 않은 정상적인 형태가 아닌 문자열을 대상(영문)으로 
+	영역 밖으로 벗어나는 경우에 제어 (=영역 안으로 위치시킨다.)
+</pre>
+
+	<h4>word-wrap</h4>
+	<div>
+Smooth like butter, like a criminal undercover
+	Gon' pop like trouble breaking into your heart like that (ooh)
+	fajlskdkfjlkdsjflkjl;ejfsljelfijelsijfejlfielfjklfjklseljsffajlskdkfjlkdsjflkjl;ejfsljelfijelsijfejlfielfjklfjklseljsf
+  	Smooth like butter, like a criminal undercover
+	Gon' pop like trouble breaking into your heart like that (ooh)
+	fajlskdkfjlkdsjflkjl;ejfsljelfijelsijfejlfielfjklfjklseljsffajlskdkfjlkdsjflkjl;ejfsljelfijelsijfejlfielfjklfjklseljsf
+  </div>
+
+</body>
+</html>

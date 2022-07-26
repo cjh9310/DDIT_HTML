@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src= "../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<pre>
+	  clone()	  : 대상요소 복사(Ctrl+c)
+	  clone(true) : 대상요소 및 이벤트 처리기 복사(Ctrl+c)
+	  
+	  복사 이후 붙여넣기를 통해 완료 (append 필요)
+	  * 이벤트 처리기 : 이벤트 발생시 실행될 함수를 연결해주는 핸들러 역할
+	
+	</pre>
+	
+	<p id="p1">대상요소만 복사 clone() / 이벤트처리기도 복사 clone(true)</p>
+	
+	<input type="button" value="clone">
+	<input type="button" value="clone_true">
+	<div></div>
+	
+<script>
+//id=p1에 이벤트 부여
+$('#p1').on('click',function(){
+	$(this).css('fontSize', '+=3px');           //폰트 사이즈가 3px씩증가하도록 
+});
+
+
+$('[value="clone"]').on('click',function(){
+	let cl = $('#p1').clone();    //요소만 복사
+	$('div').append(cl);
+});
+$('input:button').eq(1).on('click',function(){
+	let cl_t = $('#p1').clone(true);   //요소 복사 및 이벤트처리기
+	$('div').append(cl_t);
+});
+</script>
+
+
+</body>
+</html>

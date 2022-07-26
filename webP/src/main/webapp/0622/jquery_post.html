@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div>
+    <input> <br>
+    <input type="password">
+    <input type="button" value="전송">
+    <div id="aa"></div>
+  </div>
+<script>
+  $('input:button').on('click',function(){
+	//요청데이터 가져오기
+	let v_id = $(':text').val();
+	let v_pw = $(':password').val();
+    let data = `id=${v_id}&pw=${v_pw}`;
+    
+    //jQuery AJAX ..
+/* 	$.ajax({
+		//요청
+		url : 'ajax_post.jsp',
+		type : 'post',	//method 속성명을 사용해도 됌
+		data : data,
+		//응답
+		//1:응답데이터 2:statusText정보 3:xhr객체 정보
+		success:function(asdf){
+			//asdf출력..
+// 			let result = `${v_id}님 ${asdf.rst}`;
+			let result = ``;
+			if(asdf.cd == "ok"){
+			  result += `${v_id}님 환영합니다!!`;
+			}else{
+			  result += `${v_id}님 로그인 실패..`;
+			}
+			$('#aa').text(result);
+		},
+		//1:xhr객체 정보 2:statusText정보 3:error code
+		error:function(xhr){//에러 표시
+			alert(xhr.status);
+// 			alert("에러발생");
+		}, 
+		complete:function(){	//성공실패여부를 떠나 무조건 실행
+			alert("무조건 실행");
+		},
+		dataType: 'json'		//responseText(Xml) 역할
+	}); 
+*/
+    
+	$.ajax({
+		url : 'ajax_post.jsp',
+		type : 'post',	//method 속성명을 사용해도 됌
+		data : data,
+		dataType: 'json'		//responseText(Xml) 역할
+	}).done(function(asdf){
+		let result = ``;
+		if(asdf.cd == "ok"){
+		  result += `${v_id}님 환영합니다!!`;
+		}else{
+		  result += `${v_id}님 로그인 실패..`;
+		}
+		$('#aa').text(result);
+	})
+	.fail(function(){
+		alert(xhr.status);
+	})
+	.always(function(){
+		alert("여기도 무조건 실행");
+	});
+
+
+
+
+  });
+
+
+
+</script>
+</body>
+</html>

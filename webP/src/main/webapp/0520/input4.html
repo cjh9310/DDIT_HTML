@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+label{ 
+	display : inline-block;
+	width : 60px;
+}
+/*  label은 inline속성이라 사이즈 조정이 안된다.(속성 자체를 바꾸면 변경 가능)  */
+#gender {
+	display : inline-block;
+}/*div를 사용하면 '성별 : '과 radio type이 한 칸 내려가게 되는데 이를 방지하고자 display를 사용해
+	성별 : 옆에 표시될 수 있게 해준다..  */
+</style>
+</head>
+<body>
+	
+	<form action = "test4.jsp"  method = "post">
+		<fieldset> <!-- 테두리 -->
+		<legend>인적사항</legend>  <!-- 제목 -->
+		<label for = "name"> 이름 : </label> <!-- "name"로 연결 -->
+        <input type="text" name="name" id="name" 
+        	   value =""  required> <br>
+<!--         readonly, disabled, maxlength="5" 
+			 required를 사용할려면 value에 공백이여야 한다.-->
+        <label for = "gender">성별 : </label>
+        <div id = "gender">
+        여<input type="radio" value="여자" >
+     	남<input type="radio" value="남자" > 
+        </div>  <br><!-- 남 여 의 id가 같아서 div로 한 번에 묶어서 id지정 -->
+     <label for = "mail"> 이메일 : </label>
+     <input type = "email" id= "mail"> <br>
+     <label for = "ph"> 전화 : </label>
+     <input type = "tel" id="ph"
+        placeholder = "ex) 000-0000-0000"
+	    pattern = "[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}">  <br>
+	    <!--      	 placeholder  예시-->
+     <label for = "day">생일 : </label>
+     <input type = "date" id="day"> <br>
+     <label for = "num">넘버 : </label>
+     <input type = "number" id="num"
+     	    min="0" max= "7"> <br>
+     <label for = "rg">레인지 : </label>
+     <input type = "range" id= "rg"> <br>
+     
+	 <input type = "submit">
+  	 	</fieldset>
+	
+	</form>
+</body>
+</html>
